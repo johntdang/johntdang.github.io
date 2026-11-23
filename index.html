@@ -1,0 +1,1162 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="data:,">
+<title>John Dang — Mechanical Engineering Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f4f3ef; --surface:#ffffff; --surface2:#e9e7df;
+  --ink:#161613; --ink2:#2f2f2a; --muted:#55544c;
+  --line:#d6d2c4; --line2:#b9b4a3;
+  --accent:#161613; --accent-ink:#ffffff;
+  --chip:#e9e7df;
+  --green:#2e5a3d; --green-deep:#173d26; --green-hover-ink:#173d26;
+  --green-soft:#dce9dd; --green-soft-hover:#c2d8c6; --green-border:#2e5a3d;
+  --shadow:0 2px 6px rgba(20,30,22,.10),0 16px 36px rgba(20,30,22,.10);
+  --shadow-strong:0 4px 10px rgba(20,30,22,.14),0 20px 44px rgba(20,30,22,.14);
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg:#0f0f0e; --surface:#1d1d1a; --surface2:#2a2a26;
+    --ink:#f7f4ec; --ink2:#e2ded2; --muted:#c0bcb0;
+    --line:#3d3d37; --line2:#55554d;
+    --accent:#f7f4ec; --accent-ink:#0f0f0e;
+    --chip:#2a2a26;
+    --green:#5da873; --green-deep:#3f7a54; --green-hover-ink:#dff0e3;
+    --green-soft:#1e3526; --green-soft-hover:#2c4f38; --green-border:#5da873;
+    --shadow:0 2px 6px rgba(0,0,0,.45),0 16px 36px rgba(0,0,0,.4);
+    --shadow-strong:0 4px 10px rgba(0,0,0,.55),0 20px 44px rgba(0,0,0,.5);
+    color-scheme:dark;
+  }
+}
+::selection{background:var(--green-soft-hover);color:var(--green-hover-ink)}
+:focus-visible{outline:2px solid var(--green);outline-offset:2px}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto} *{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+button,[role="button"],summary{ min-height:44px}
+img{display:block;max-width:100%}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+h1,h2,h3{font-family:"Newsreader",Georgia,serif;font-weight:600;line-height:1.05;letter-spacing:-.015em;margin:0}
+.mono{font-family:"IBM Plex Mono",ui-monospace,monospace}
+
+/* header */
+header.site{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--bg) 96%, transparent);backdrop-filter:blur(10px);border-bottom:2px solid var(--ink)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 0}
+.brand{font-family:"Newsreader",Georgia,serif;font-size:21px;text-decoration:none;font-weight:700;transition:color .18s}
+.brand:hover{color:var(--green)}
+.brand span{color:var(--muted);font-weight:400}
+.navlinks{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.navlinks a{ text-decoration:none;font-size:14.5px;font-weight:650;color:var(--ink);padding:10px 18px;border-radius:999px;border:1.5px solid var(--ink);background:var(--surface);box-shadow:var(--shadow);transition:background .18s,border-color .18s,color .18s,box-shadow .18s}
+.navlinks a:hover{background:var(--green-soft);border-color:var(--green);color:var(--green-hover-ink)}
+.navlinks a.active{background:var(--green);color:#fff;font-weight:700;border-color:var(--green)}
+.navlinks a.active:hover{background:var(--green-deep);border-color:var(--green-deep);color:#fff}
+.navlinks a.btn.primary{background:var(--green-deep);border:1.5px solid var(--green-deep);padding:10px 18px;color:#fff;box-shadow:var(--shadow)}
+.navlinks a.btn.primary:hover{background:var(--ink);border-color:var(--ink);color:var(--bg);box-shadow:var(--shadow-strong)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;border:1.5px solid var(--ink);background:var(--surface);color:var(--ink);padding:10px 18px;border-radius:999px;font-size:14.5px;font-weight:650;cursor:pointer;transition:background .18s,border-color .18s,color .18s,transform .18s,box-shadow .18s}
+.btn:hover{background:var(--green-soft);border-color:var(--green);color:var(--green-hover-ink)}
+.btn.primary{background:var(--green-deep);color:#fff;border-color:var(--green-deep);box-shadow:var(--shadow)}
+.btn.primary:hover{background:var(--ink);border-color:var(--ink);color:var(--bg);opacity:1;box-shadow:var(--shadow-strong)}
+@media(max-width:640px){.navlinks a.hide-m{display:none}.brand{font-size:17px;white-space:nowrap}.brand span{display:none}.nav{gap:8px;padding:10px 0}.navlinks{gap:6px;flex-wrap:wrap;justify-content:flex-end}.navlinks a{font-size:13px;padding:8px 12px}.navlinks .btn{font-size:13px;padding:8px 12px;white-space:nowrap}.wrap{padding:0 16px}.hero{padding:36px 0 28px}}
+
+/* hero */
+.hero{padding:64px 0 44px;border-bottom:2px solid var(--ink)}
+.eyebrow{font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--green);font-weight:800;margin:0 0 14px;display:flex;align-items:center;gap:12px}
+.eyebrow::after{content:"";height:3px;width:56px;background:var(--green);border-radius:999px;display:inline-block}
+.hero h1{font-size:clamp(52px,8vw,84px);max-width:760px;color:var(--ink)}
+.hero .role{font-size:clamp(19px,2.6vw,24px);color:var(--ink2);margin:18px 0 0;max-width:680px;line-height:1.45;font-family:"Newsreader",Georgia,serif}
+.hero p.lede{color:var(--muted);max-width:640px;margin:16px 0 0;font-size:16.5px}
+.hero-meta{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:24px;max-width:720px}
+.chip{display:inline-flex;align-items:center;gap:8px;padding:0;background:transparent;border:0;border-radius:0;font-size:14px;font-weight:600;letter-spacing:.01em;color:var(--ink2);box-shadow:none;cursor:default}
+.chip::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--green);flex:none}
+.hero-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.hero-actions .btn{min-height:48px;padding:12px 22px;font-size:15px}
+.glance{margin:32px 0 0}
+.glance-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:12px}
+.glance-head .kicker{margin:0}
+.glance-link{font-size:13px;color:var(--muted);text-decoration:none;white-space:nowrap;transition:color .18s}
+.glance-link:hover{color:var(--green);text-decoration:underline;text-decoration-color:var(--green);text-underline-offset:3px}
+.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line2);border:1.5px solid var(--ink);border-radius:14px;overflow:hidden;margin:0;box-shadow:var(--shadow)}
+.fact{background:var(--surface);padding:18px 16px;border-top:4px solid var(--green)}
+.fact .org{display:block;font-family:"Newsreader",Georgia,serif;font-size:20px;font-weight:700;line-height:1.15;color:var(--green)}
+.fact .role{display:block;font-size:13.5px;font-weight:600;color:var(--ink2);line-height:1.35;margin-top:6px}
+.fact .detail{font-size:12.5px;color:var(--muted);line-height:1.45;display:block;margin-top:3px}
+@media(max-width:760px){.facts{grid-template-columns:1fr 1fr}}
+@media(max-width:420px){.facts{grid-template-columns:1fr}}
+
+/* sections */
+section{padding:56px 0;scroll-margin-top:84px;border-bottom:1px solid var(--line2)}
+.sec-head{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:26px;flex-wrap:wrap;padding-bottom:14px;border-bottom:3px solid var(--ink)}
+.sec-head h2{font-size:40px}
+.sec-head p{color:var(--muted);max-width:520px;margin:6px 0 0;font-size:15px}
+.kicker{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--green);font-weight:800;margin-bottom:8px}
+
+/* experience */
+.timeline{display:grid;gap:0}
+.job{display:grid;grid-template-columns:190px 1fr;gap:24px;padding:22px 0;border-top:1px solid var(--line)}
+.job:first-child{border-top:0;padding-top:4px}
+.job .when{font-size:13px;color:var(--muted);line-height:1.5}
+.job .when strong{color:var(--ink2);display:block;font-weight:600}
+.job h3{font-size:21px;font-family:system-ui,sans-serif;font-weight:650;letter-spacing:-.01em}
+.job .org{color:var(--muted);font-size:14px;margin:2px 0 10px}
+.job ul{margin:0;padding-left:18px;color:var(--ink2);font-size:15px}
+.job li{margin:5px 0}
+.job-group{padding:4px 0 8px}
+.job-group-header{display:flex;justify-content:space-between;align-items:baseline;gap:4px 20px;flex-wrap:wrap;padding-bottom:10px;border-bottom:2px solid var(--green);margin-bottom:4px}
+.job-group-org{font-size:24px;font-family:system-ui,sans-serif;font-weight:800;letter-spacing:-.015em;line-height:1.15;color:var(--ink)}
+.job-group-loc{font-size:13.5px;color:var(--muted);white-space:nowrap}
+.job-sub{border-top:0;padding:16px 0}
+.job-sub h3{margin-bottom:10px}
+.job-sub:last-child{padding-bottom:8px}
+.job-sub + .job-sub{border-top:1px solid var(--line)}
+.job-group + .job-group{border-top:1px solid var(--line);padding-top:20px;margin-top:4px}
+.job-sub h3:has(+ .org){margin-bottom:0}
+@media(max-width:680px){.job{grid-template-columns:1fr;gap:6px}.job-group-header{flex-direction:column}.job-group-loc{white-space:normal}.job-sub{padding:14px 0}}
+
+/* education */
+.edu{display:grid;grid-template-columns:1.2fr .8fr;gap:16px}
+@media(max-width:680px){.edu{grid-template-columns:1fr}}
+.card{background:var(--surface);border:1.5px solid var(--line2);border-radius:16px;padding:22px;box-shadow:var(--shadow)}
+.card h3{font-size:21px}
+.card p{color:var(--ink2);font-size:15px;margin:8px 0 0}
+
+/* filters */
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.filter-btn{border:1.5px solid var(--ink);background:var(--surface);color:var(--ink);border-radius:999px;padding:10px 16px;font-size:14px;cursor:pointer;font-weight:650;transition:background .18s,border-color .18s,color .18s}
+.filter-btn:hover{background:var(--green-soft);border-color:var(--green-border);color:var(--green-hover-ink)}
+.filter-btn[aria-pressed="true"]{background:var(--green);color:#fff;border-color:var(--green)}
+.filter-btn[aria-pressed="true"]:hover{background:var(--green-deep);border-color:var(--green-deep);color:#fff}
+.count{font-size:13px;color:var(--muted)}
+
+/* projects */
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media(max-width:760px){.grid{grid-template-columns:1fr}}
+.project{background:var(--surface);border:1.5px solid var(--line2);border-radius:18px;overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column;transition:border-color .18s, transform .18s, box-shadow .18s}
+.project:hover{border-color:var(--green);box-shadow:var(--shadow-strong);transform:translateY(-3px)}
+.project[hidden]{display:none}
+.ph{position:relative;background:var(--surface2);aspect-ratio:16/10;overflow:hidden;border:0;padding:0;width:100%;cursor:zoom-in;text-align:left}
+.ph img{width:100%;height:100%;object-fit:cover;filter:saturate(1.08) contrast(1.06);transition:transform .35s ease, filter .2s}
+.project:hover .ph img{transform:scale(1.03)}
+.ph .zoom{position:absolute;right:10px;bottom:10px;background:rgba(20,20,18,.72);color:#fff;font-size:12px;padding:6px 10px;border-radius:999px;backdrop-filter:blur(4px)}
+.ph.noimg{display:flex;align-items:center;justify-content:center;cursor:default;aspect-ratio:16/7;background:repeating-linear-gradient(135deg,var(--surface2) 0 10px, color-mix(in srgb,var(--surface2) 92%, var(--line)) 10px 20px)}
+.ph.noimg span{font-family:"Newsreader",Georgia,serif;color:var(--muted);font-size:18px;padding:20px;text-align:center}
+.pbody{padding:18px 18px 16px;display:flex;flex-direction:column;gap:10px;flex:1}
+.ptop{display:flex;justify-content:space-between;gap:12px;align-items:start}
+.ptop h3{font-size:22px;line-height:1.15;font-family:system-ui,sans-serif;font-weight:750}
+.year{font-size:12px;font-weight:700;color:var(--ink);border:1.5px solid var(--ink);background:var(--surface2);padding:4px 8px;border-radius:999px;white-space:nowrap;margin-top:2px}
+.cat{font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--green);font-weight:800}
+.pbody p{margin:0;color:var(--ink2);font-size:14.5px}
+.specs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:2px}
+.spec{background:var(--surface2);border:1px solid var(--line2);border-radius:10px;padding:10px 11px}
+.spec b{display:block;font-size:13.5px;color:var(--green);font-weight:750}
+.spec span{font-size:12.5px;color:var(--ink2);line-height:1.4;display:block}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{font-size:12px;font-weight:600;padding:5px 9px;border-radius:999px;background:var(--chip);color:var(--ink);border:1px solid var(--line2)}
+.paper-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:2px}
+.paper-link{display:inline-flex;align-items:center;gap:6px;text-decoration:none;border:1px solid var(--line2);background:var(--bg);color:var(--ink);padding:8px 12px;border-radius:999px;font-size:13px;font-weight:600;min-height:40px}
+.paper-link:hover{background:var(--green-soft);border-color:var(--green-border);color:var(--green-hover-ink)}
+.paper-link span{color:var(--muted);font-weight:400}
+.paper-link:hover span{color:var(--green)}
+.job a.inline-link{color:var(--ink);text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--line2)}
+.job a.inline-link:hover{color:var(--green);text-decoration-color:var(--green)}
+.more{display:none;border-top:1px solid var(--line);padding-top:12px;color:var(--ink2);font-size:14.5px}
+.project.expanded .more{display:block}
+.more p{margin:0 0 8px}
+.expand-btn{margin-top:auto;align-self:flex-start;background:none;border:0;padding:10px 2px;font-size:14px;font-weight:600;cursor:pointer;color:var(--ink);display:inline-flex;gap:6px;align-items:center;transition:color .18s}
+.expand-btn:hover{color:var(--green)}
+.expand-btn .chev{transition:transform .18s}
+.project.expanded .expand-btn .chev{transform:rotate(180deg)}
+
+/* skills */
+.skills{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:760px){.skills{grid-template-columns:1fr}}
+.skill h3{font-size:18px;font-family:system-ui,sans-serif;font-weight:650;margin-bottom:12px}
+.skill ul{list-style:none;padding:0;margin:0;display:grid;gap:8px}
+.skill li{padding:11px 12px;border:1px solid var(--line2);border-radius:10px;background:var(--surface2);font-size:14px;font-weight:550;color:var(--ink)}
+.skill li b{color:var(--ink)}
+
+/* contact */
+.contact-grid{display:grid;grid-template-columns:1fr;gap:18px}
+@media(max-width:760px){.contact-grid{grid-template-columns:1fr}}
+.contact-list{display:grid;gap:10px;margin-top:14px}
+.contact-list a,.contact-list div{display:flex;justify-content:space-between;gap:16px;padding:14px 16px;border:1.5px solid var(--line2);border-radius:12px;text-decoration:none;background:var(--surface);transition:background .18s,border-color .18s}
+.contact-list a:hover{background:var(--green-soft);border-color:var(--green)}
+.contact-list span{color:var(--ink2);font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.06em}
+.contact-list strong{font-size:14.5px;text-align:right;word-break:break-all;color:var(--ink)}
+#contact .card{background:var(--green-deep);border-color:var(--green-deep);color:#fff;box-shadow:var(--shadow-strong)}
+#contact .card h3{color:#fff;font-size:24px}
+#contact .card p{color:#d9e8dc}
+#contact .contact-list a{background:#fff;border-color:#fff;color:#161613}
+#contact .contact-list a:hover{background:var(--green-soft-hover);border-color:#fff}
+#contact .contact-list span{color:#2f2f2a}
+#contact .contact-list strong{color:#161613}
+footer{padding:28px 0 40px;color:var(--ink2);font-size:13px;border-top:2px solid var(--ink)}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+/* project detail pages */
+.view-link{margin-top:auto;align-self:flex-start;padding:10px 2px;font-size:14.5px;font-weight:750;color:var(--green);text-decoration:none;display:inline-flex;gap:6px;align-items:center;min-height:44px;transition:color .18s}
+.view-link:hover{color:var(--ink);text-decoration:underline;text-decoration-color:var(--green);text-decoration-thickness:2px;text-underline-offset:3px}
+.project-page{padding:36px 0 52px;border-bottom:1px solid var(--line)}
+.back-link{display:inline-flex;align-items:center;min-height:44px;font-size:14px;font-weight:600;text-decoration:none;color:var(--ink2);transition:color .18s}
+.back-link:hover{color:var(--green);text-decoration:underline;text-decoration-color:var(--green);text-underline-offset:3px}
+.pp-title{font-size:clamp(32px,5vw,46px);margin-top:10px}
+.pp-title:focus{outline:none}
+.pp-meta{color:var(--muted);font-size:14.5px;margin:8px 0 0}
+.pp-photo{border-radius:16px;margin:22px 0 6px;border:1px solid var(--line)}
+.pp-gallery{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:20px 0 8px}
+.pp-gallery figure{margin:0}
+.pp-gallery .ph{aspect-ratio:4/3;border-radius:14px;border:1px solid var(--line);margin:0}
+.pp-gallery .ph.fit img{object-fit:contain;background:var(--surface2)}
+.pp-gallery figcaption{font-size:13px;color:var(--muted);margin-top:7px;line-height:1.45}
+.pp-gallery .wide{grid-column:1/-1}
+.pp-gallery .wide .ph{aspect-ratio:16/10}
+@media(max-width:640px){.pp-gallery{grid-template-columns:1fr}}
+.pp-body{max-width:720px}
+.pp-lede{font-family:"Newsreader",Georgia,serif;font-size:20px;line-height:1.5;color:var(--ink);margin:18px 0 0}
+.pp-body h3{font-size:22px;margin:28px 0 8px}
+.pp-body p{color:var(--ink2);font-size:16px;margin:0 0 12px}
+.pp-body ul{color:var(--ink2);font-size:16px;margin:0 0 12px;padding-left:20px}
+.pp-body li{margin:5px 0}
+.pp-specs{margin:18px 0}
+.pp-tags{margin-top:14px}
+.pp-nav{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;border-top:1px solid var(--line);margin-top:36px;padding-top:18px}
+.pp-nav a{font-size:14px;font-weight:600;text-decoration:none;color:var(--ink);padding:10px 4px;min-height:44px;display:inline-flex;align-items:center;transition:color .18s}
+.pp-nav a:hover{color:var(--green);text-decoration:underline;text-decoration-color:var(--green);text-underline-offset:3px}
+.pp-nav a.mid{color:var(--muted);font-weight:550}
+.pp-nav a.mid:hover{color:var(--green)}
+
+/* about page */
+.about-page{padding:36px 0 52px;border-bottom:1px solid var(--line)}
+.about-page .pp-body{margin-top:8px}
+.about-page .pp-title{padding-bottom:14px;border-bottom:3px solid var(--green)}
+.about-page .pp-body h3{color:var(--green)}
+.about-page .pp-body li::marker{color:var(--green)}
+.about-page .pp-body li b{color:var(--green)}
+
+/* lightbox */
+.lightbox{position:fixed;inset:0;z-index:60;background:rgba(18,18,16,.88);display:none;align-items:center;justify-content:center;padding:18px}
+.lightbox.open{display:flex}
+.lb-inner{max-width:960px;width:100%;background:var(--surface);border-radius:16px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.35)}
+.lb-inner img{width:100%;max-height:74vh;object-fit:contain;background:#111}
+.lb-cap{display:flex;justify-content:space-between;gap:16px;align-items:center;padding:14px 16px}
+.lb-cap p{margin:0;font-size:14px;color:var(--ink2)}
+.lb-cap p b{color:var(--ink);display:block}
+.lb-close{flex-shrink:0}
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap nav">
+    <a class="brand" href="#top">John Dang <span>· Portfolio</span></a>
+    <nav class="navlinks" aria-label="Primary">
+      <a href="#skills" data-spy="skills" class="hide-m">Skills</a>
+      <a href="#projects" data-spy="projects">Projects</a>
+      <a href="#experience" data-spy="experience">Experience</a>
+      <a href="#contact" data-spy="contact">Contact</a>
+      <a href="#/about" id="aboutNavLink">About</a>
+      <a class="btn primary" href="#resume">Résumé ↓</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div id="homeView">
+  <!-- HERO -->
+  <div class="wrap hero">
+    <p class="eyebrow">Mechanical Engineering</p>
+    <h1>John Dang</h1>
+    <div class="hero-meta">
+      <span class="chip">Design &amp; Manufacturing</span><span class="chip">Vehicle Dynamics</span><span class="chip">Hardware + AI</span><span class="chip">SolidWorks · CSWA Certified</span>
+    </div>
+    <div class="glance">
+      <div class="glance-head"><span class="kicker">Experience at a glance</span><a class="glance-link" href="#experience">Full experience ↓</a></div>
+      <div class="facts" aria-label="Experience at a glance">
+        <div class="fact"><span class="org">Meta</span><span class="role">Team Lead — Robotics Data Operations</span><span class="detail">Superintelligence Labs · Menlo Park<br>Aug 2026 — Present</span></div>
+        <div class="fact"><span class="org">REAL Lab</span><span class="role">Research Assistant</span><span class="detail">Robotics &amp; Explainable AI Lab, UC Riverside<br>Sept 2025 — July 2026</span></div>
+        <div class="fact"><span class="org">Formula SAE</span><span class="role">Suspension Associate Engineer</span><span class="detail">UCR Highlander Racing<br>Jan 2024 — June 2026</span></div>
+        <div class="fact"><span class="org">UC Riverside</span><span class="role">B.S. Mechanical Engineering ’26</span><span class="detail">Design &amp; Manufacturing concentration<br>Vehicle dynamics, robotics &amp; hardware</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="wrap">
+      <div class="sec-head"><div><h2>Skills</h2></div></div>
+      <div class="skills">
+        <div class="card skill"><h3>CAD &amp; Analysis</h3><ul><li><b>SolidWorks</b> — CSWA Certified</li><li><b>Fusion 360</b></li><li>Finite Element Analysis (FEA)</li><li>GD&amp;T</li></ul></div>
+        <div class="card skill"><h3>Manufacturing</h3><ul><li>CNC Machining · Manual Lathe / Mill</li><li>In-House Welding · Soldering</li><li>3D Printing (PLA / PETG)</li><li>Fastener Shear / Tensile Testing</li></ul></div>
+        <div class="card skill"><h3>Languages</h3><ul><li><b>English</b></li><li><b>Mandarin</b></li><li>Cantonese — Conversational</li><li>Vietnamese — Conversational</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><h2>Projects</h2></div>
+        <span class="count" id="resultCount">8 projects</span>
+      </div>
+
+      <div class="filters" role="group" aria-label="Filter projects by category">
+        <button class="filter-btn" data-filter="all" aria-pressed="true">All</button>
+        <button class="filter-btn" data-filter="formula" aria-pressed="false">Formula SAE</button>
+        <button class="filter-btn" data-filter="robotics" aria-pressed="false">Robotics &amp; AI</button>
+        <button class="filter-btn" data-filter="capstone" aria-pressed="false">Capstone</button>
+        <button class="filter-btn" data-filter="design" aria-pressed="false">Design Optimization</button>
+      </div>
+
+      <div class="grid" id="projectGrid">
+
+        <!-- Control Arm -->
+        <article class="project" data-cat="formula">
+          <button class="ph" data-lightbox="assets/img-00-8bf0f7366e0c.jpg" data-title="Control Arm Design" data-caption="Upper and lower control arms assembled to the machined bearing housing — UCR Highlander Racing, 2023" aria-label="View control arm photo larger">
+            <img src="assets/img-00-8bf0f7366e0c.jpg" alt="Upper and lower control arms assembled to the bearing housing with rod ends and chassis mounting blocks" ><span class="zoom">View larger</span>
+          </button>
+          <div class="pbody">
+            <div><div class="cat">Formula SAE · Suspension</div><div class="ptop"><h3>Control Arm Design</h3><span class="year">2023</span></div></div>
+            <p>Double wishbone control arm in 4130 steel normalized tubing, engineered for a 5,000 N critical buckling load.</p>
+            <a class="view-link" href="#/project/control-arm">More details <span aria-hidden="true">→</span></a>
+          </div>
+        </article>
+
+        <!-- Front Corner -->
+        <article class="project" data-cat="formula">
+          <button class="ph" data-lightbox="assets/img-01-699be88222cf.jpg" data-title="Front Corner Assembly" data-caption="Complete front suspension corner mirrored to a full front axle — 2025" aria-label="View front corner photo larger">
+            <img src="assets/img-01-699be88222cf.jpg" alt="SolidWorks model of complete front suspension corner assembly" ><span class="zoom">View larger</span>
+          </button>
+          <div class="pbody">
+            <div><div class="cat">Formula SAE · Suspension</div><div class="ptop"><h3>Front Corner Assembly</h3><span class="year">2025</span></div></div>
+            <p>Complete front suspension corner modeled in SolidWorks and mirrored to build the full front axle for FEA and kinematics.</p>
+            <a class="view-link" href="#/project/front-corner">More details <span aria-hidden="true">→</span></a>
+          </div>
+        </article>
+
+        <!-- Pushrod Mounts — Front & Rear (combined) -->
+        <article class="project" data-cat="formula">
+          <button class="ph" data-lightbox="assets/img-02-4193d09359c4.jpg" data-title="Pushrod Mounts — Front &amp; Rear" data-caption="Sheet-metal front pushrod mount with double-shear tabs — 2025" aria-label="View pushrod mount photo larger">
+            <img src="assets/img-02-4193d09359c4.jpg" alt="CAD rendering of front pushrod mount sheet metal assembly" ><span class="zoom">View larger</span>
+          </button>
+          <div class="pbody">
+            <div><div class="cat">Formula SAE · Suspension</div><div class="ptop"><h3>Pushrod Mounts — Front &amp; Rear</h3><span class="year">2025</span></div></div>
+            <p>Sheet-metal mounts interfacing the pushrods to the outboard pickup points in double shear — a slotted base-and-tabs design at the front, and a folded single-piece design at the rear.</p>
+            <a class="view-link" href="#/project/pushrod-mounts">More details <span aria-hidden="true">→</span></a>
+          </div>
+        </article>
+
+        <!-- ALOHA -->
+        <article class="project" data-cat="robotics">
+          <button class="ph" data-lightbox="assets/img-03-0e2aba241af2.jpg" data-title="ALOHA Stationary — REAL Lab" data-caption="ALOHA bimanual teleoperation at UCR Robotics & Explainable AI Lab" aria-label="View ALOHA photo larger">
+            <img src="assets/img-03-0e2aba241af2.jpg" alt="ALOHA stationary bimanual teleoperation robot in the REAL Lab" ><span class="zoom">View larger</span>
+          </button>
+          <div class="pbody">
+            <div><div class="cat">Robotics &amp; AI · REAL Lab</div><div class="ptop"><h3>ALOHA Stationary Teleoperation</h3><span class="year">2025–26</span></div></div>
+            <p>Bimanual teleoperation datasets and uncertainty-aware temporal action segmentation for toy-car assembly — bridging robot hardware and deep learning.</p>
+            <div class="paper-links" aria-label="Paper and project website">
+              <a class="paper-link" href="https://arxiv.org/abs/2606.08341" target="_blank" rel="noopener">Paper on arXiv <span>↗</span></a>
+              <a class="paper-link" href="https://snazzy-kelpie-a9faf0.netlify.app" target="_blank" rel="noopener">Project website <span>↗</span></a>
+            </div>
+            <a class="view-link" href="#/project/aloha">More details <span aria-hidden="true">→</span></a>
+          </div>
+        </article>
+
+        <!-- BCI -->
+        <article class="project" data-cat="capstone">
+          <button class="ph" data-lightbox="assets/img-04-b74b944f82d5.jpg" data-title="BCI EEG Wheelchair — Capstone" data-caption="EEG-based Brain-Computer Interface wheelchair capstone" aria-label="View BCI wheelchair photo larger">
+            <img src="assets/img-04-b74b944f82d5.jpg" alt="Brain-computer interface EEG wheelchair capstone prototype" ><span class="zoom">View larger</span>
+          </button>
+          <div class="pbody">
+            <div><div class="cat">Capstone</div><div class="ptop"><h3>BCI EEG Wheelchair</h3><span class="year">2025–26</span></div></div>
+            <p>EEG-based brain-computer interface wheelchair for independent mobility — motor imagery control, not pre-set paths.</p>
+            <a class="view-link" href="#/project/bci-wheelchair">More details <span aria-hidden="true">→</span></a>
+          </div>
+        </article>
+
+        <!-- Bracket -->
+        <article class="project" data-cat="design">
+          <button class="ph" data-lightbox="assets/img-05-a6462d899e8d.jpg" data-title="Airplane Bracket" data-caption="Topology-optimized airplane bracket (B-0426-M) — printed prototype, 2024" aria-label="View airplane bracket photo larger">
+            <img src="assets/img-05-a6462d899e8d.jpg" alt="Topology-optimized airplane bracket prototype with two pin bores and a bolt base" ><span class="zoom">View larger</span>
+          </button>
+          <div class="pbody">
+            <div><div class="cat">Design Optimization</div><div class="ptop"><h3>Airplane Bracket</h3><span class="year">2024</span></div></div>
+            <p>Topology optimization of a Titanium 6Al-4V aerospace bracket (B-0426-M) for metal additive manufacturing in Fusion 360.</p>
+            <a class="view-link" href="#/project/airplane-bracket">More details <span aria-hidden="true">→</span></a>
+          </div>
+        </article>
+
+        <!-- Robotic Arm -->
+        <article class="project" data-cat="design">
+          <button class="ph" data-lightbox="assets/img-06-ac85d72f4296.jpg" data-title="Robotic Arm Component" data-caption="Shape optimization and von Mises stress analysis — 2024" aria-label="View robotic arm component photo larger">
+            <img src="assets/img-06-ac85d72f4296.jpg" alt="Robotic arm component with von Mises stress analysis results" ><span class="zoom">View larger</span>
+          </button>
+          <div class="pbody">
+            <div><div class="cat">Design Optimization</div><div class="ptop"><h3>Robotic Arm Component</h3><span class="year">2024</span></div></div>
+            <p>Shape optimization for a 50% mass reduction — removing material from low-stress areas and trimming stress concentrators.</p>
+            <a class="view-link" href="#/project/robotic-arm">More details <span aria-hidden="true">→</span></a>
+          </div>
+        </article>
+
+        <!-- Coat Hook -->
+        <article class="project" data-cat="design">
+          <button class="ph" data-lightbox="assets/img-07-b6de231d8a4d.jpg" data-title="Coat Hook — Generative Design Study" data-caption="Comparative generative design across materials and processes — 2024" aria-label="View coat hook photo larger">
+            <img src="assets/img-07-b6de231d8a4d.jpg" alt="Generative design iterations of a coat hook component" ><span class="zoom">View larger</span>
+          </button>
+          <div class="pbody">
+            <div><div class="cat">Design Optimization</div><div class="ptop"><h3>Coat Hook</h3><span class="year">2024</span></div></div>
+            <p>Comparative generative-design study across materials and processes against a 4.0 factor-of-safety target.</p>
+            <a class="view-link" href="#/project/coat-hook">More details <span aria-hidden="true">→</span></a>
+          </div>
+        </article>
+
+      </div>
+      <p id="noResults" style="display:none;color:var(--muted);text-align:center;padding:28px 0">No projects in this category yet.</p>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE / RESUME -->
+  <section id="experience">
+    <div class="wrap">
+      <div class="sec-head"><div><h2 id="resume">Experience</h2></div></div>
+
+      <div class="timeline">
+        <div class="job-group">
+          <div class="job-group-header">
+            <div class="job-group-org">Meta Superintelligence Labs</div>
+            <span class="job-group-loc">Menlo Park, CA</span>
+          </div>
+
+          <article class="job job-sub">
+            <div class="when"><strong>Aug 2026 — Present</strong></div>
+            <div><h3>Robotics Data Operation Team Lead</h3>
+              <ul>
+                <li>Boosted single-shift fleet efficiency from <b>22% to 50%</b> via cable routing, headband camera mounts, inventory tracking, and break schedule optimization.</li>
+                <li>Leads a <b>30-operator team</b> enforcing trajectory data quality and autonomous policy training standards.</li>
+                <li>Designs physical manipulation tasks, workspace layouts, and execution SOPs.</li>
+                <li>Conducts on-site technical interviews, leads onboarding for new hires, and trains new team leads.</li>
+              </ul></div>
+          </article>
+
+          <article class="job job-sub">
+            <div class="when"><strong>July 2026 — Aug 2026</strong></div>
+            <div><h3>Robotics Data Operation Expert</h3>
+              <ul><li>Executed robot teleoperation to capture demonstration datasets for autonomous policy training.</li><li>Troubleshot hardware and software faults with test engineers.</li></ul></div>
+          </article>
+        </div>
+
+        <div class="job-group">
+          <div class="job-group-header">
+            <div class="job-group-org">University of California, Riverside</div>
+            <span class="job-group-loc">Riverside, CA</span>
+          </div>
+
+          <article class="job job-sub">
+            <div class="when"><strong>Sept 2025 — July 2026</strong></div>
+            <div><h3>Undergraduate Research Assistant</h3><div class="org">Robotics &amp; Explainable AI Lab (REAL)</div>
+              <ul><li>Trained MS-TCN++ models via X3D features, achieving a <b>73.45 edit score</b> with human-to-robot transfer and gated correction — <b>72.51 before correction, vs. 55.23 robot-only</b>.</li><li>Co-authored a transfer learning paper (22 classes) — <a class="inline-link" href="https://arxiv.org/abs/2606.08341" target="_blank" rel="noopener">read it on arXiv ↗</a></li><li>Generated ALOHA bimanual teleoperation datasets and built the full annotation / segmentation pipeline.</li></ul></div>
+          </article>
+
+          <article class="job job-sub">
+            <div class="when"><strong>Jan 2024 — June 2026</strong></div>
+            <div><h3>Suspension Associate Engineer</h3><div class="org">UCR Highlander Racing — Formula SAE</div>
+              <ul><li>Sized control arm tubing for <b>3.0 FOS</b> under 3.5 kN longitudinal and 2.8 kN lateral loads using MATLAB and hand calculations.</li><li>Verified <b>0.42° camber change per 1 mm shim</b>.</li><li>Released 2D drawings with strict GD&amp;T.</li></ul></div>
+          </article>
+
+          <article class="job job-sub">
+            <div class="when"><strong>Sept 2025 — Mar 2026</strong></div>
+            <div><h3>Capstone Team Lead — BCI EEG Wheelchair</h3><div class="org">Senior Design Capstone</div>
+              <ul><li>Led a 5-member team using Gantt charts, weekly technical presentations, and memo reports to faculty advisors.</li></ul></div>
+          </article>
+        </div>
+      </div>
+
+      <div style="height:22px"></div>
+      <div class="edu">
+        <div class="card"><div class="kicker">Education</div><h3>University of California, Riverside</h3><p><b style="color:var(--ink)">B.S. Mechanical Engineering — GPA 3.59</b><br>Aug 2022 – June 2026 · Concentration in design and manufacturing, focused on vehicle dynamics, robotics, and hardware design.</p></div>
+        <div class="card"><div class="kicker">Focus</div><h3>What I work on</h3><p>Suspension design and validation, robot teleoperation and data quality, hardware for machine learning, and design optimization for manufacturing.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" style="border-bottom:0">
+    <div class="wrap">
+      <div class="sec-head"><div><div class="kicker">Get in touch</div><h2>Contact</h2></div></div>
+      <div class="contact-grid">
+        <div class="card">
+          <h3>John Dang</h3><p>Mechanical Engineering · Robotics · Hardware Design</p>
+          <div class="contact-list">
+            <a href="mailto:johntndang@gmail.com"><span>Email</span><strong>johntndang@gmail.com</strong></a>
+            <a href="https://linkedin.com/in/johntdang" target="_blank" rel="noopener"><span>LinkedIn</span><strong>linkedin.com/in/johntdang ↗</strong></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  </div><!-- /homeView -->
+  <div id="projectPages">
+        <!-- PAGE: Control Arm -->
+        <section class="project-page" id="page-control-arm" hidden>
+          <div class="wrap">
+            <a class="back-link" href="#projects">← All projects</a>
+            <div class="cat" style="margin-top:14px">Formula SAE · Suspension</div>
+            <h2 class="pp-title" tabindex="-1">Control Arm Design</h2>
+            <p class="pp-meta">2023 · UCR Highlander Racing — Suspension Associate Engineer</p>
+            <button class="ph pp-photo" data-lightbox="assets/img-00-8bf0f7366e0c.jpg" data-title="Control Arm Design" data-caption="Upper and lower control arms assembled to the machined bearing housing — UCR Highlander Racing, 2023" aria-label="View control arm photo larger">
+              <img src="assets/img-00-8bf0f7366e0c.jpg" alt="Upper and lower control arms assembled to the bearing housing with rod ends and chassis mounting blocks"><span class="zoom">View larger</span>
+            </button>
+            <div class="pp-body">
+              <p class="pp-lede">A double wishbone control arm in 4130 steel normalized tubing, engineered for a 5,000 N critical buckling load — the part that locates the wheel and carries cornering and braking loads from the tire contact patch into the chassis.</p>
+              <div class="specs pp-specs">
+                <div class="spec"><b>3.0 FOS</b><span>Under 3.5 kN longitudinal &amp; 2.8 kN lateral loads (MATLAB + hand calcs)</span></div>
+                <div class="spec"><b>9.75 mm ID</b><span>Universal bore; 10.636–10.91 mm OD scaled by arm length</span></div>
+                <div class="spec"><b>5,000 N</b><span>Critical buckling load the tubing was engineered around</span></div>
+                <div class="spec"><b>4130 steel</b><span>Normalized tubing, welded to a machined bearing housing</span></div>
+              </div>
+              <div class="tags pp-tags"><span class="tag">SolidWorks</span><span class="tag">4130 Steel</span><span class="tag">MATLAB</span><span class="tag">GD&amp;T</span></div>
+              <h3>Overview</h3>
+              <p>On a Formula SAE car, the control arms are the structural link between the wheels and the chassis. Every load the tire generates — braking, cornering, bumps — passes through them, and because they work as slender tubes in compression, buckling is the failure mode that drives the design. This arm was designed for UCR Highlander Racing's double wishbone suspension, where the geometry also has to hold the wheel's alignment precisely as the suspension moves.</p>
+              <h3>Design approach</h3>
+              <p>The arm is built from 4130 steel normalized tubing, welded to a custom-machined steel housing containing Aurora HAB4T bearings. Grade 8 fasteners and Aurora rod ends handle the chassis mounting, so the arm can be installed, adjusted, and serviced with standard hardware. A single universal bore of 9.75 mm ID runs across the arm family, with the tube OD scaled by arm length — 10.636 to 10.91 mm — so longer, more heavily loaded arms get more material without redesigning the interfaces.</p>
+              <div class="pp-gallery">
+                <figure class="wide">
+                  <button class="ph" data-lightbox="assets/img-08-82c308b987fe.jpg" data-title="Control Arm Design — CAD Model" data-caption="CAD render of the double wishbone control arm assembly" aria-label="View control arm CAD render larger">
+                    <img src="assets/img-08-82c308b987fe.jpg" alt="CAD render of double wishbone control arm assembly for Formula SAE"><span class="zoom">View larger</span>
+                  </button>
+                  <figcaption>The SolidWorks model the arms were built from — double wishbone geometry with the universal bearing bore.</figcaption>
+                </figure>
+              </div>
+              <h3>Validation &amp; manufacturing</h3>
+              <p>The design was engineered to maintain a strict 2.5 factor of safety in the original buckling analysis, and the final configuration reaches a 3.0 factor of safety under 3.5 kN longitudinal and 2.8 kN lateral loads, sized with MATLAB and hand calculations. As Suspension Associate Engineer, John also released the 2D drawings with strict GD&amp;T, so the part that came off the welder matched the part that was analyzed.</p>
+            </div>
+            <nav class="pp-nav" aria-label="Project navigation">
+              <a href="#projects" class="mid">← All projects</a>
+              <a href="#/project/front-corner">Next: Front Corner Assembly →</a>
+            </nav>
+          </div>
+        </section>
+
+        <!-- PAGE: Front Corner -->
+        <section class="project-page" id="page-front-corner" hidden>
+          <div class="wrap">
+            <a class="back-link" href="#projects">← All projects</a>
+            <div class="cat" style="margin-top:14px">Formula SAE · Suspension</div>
+            <h2 class="pp-title" tabindex="-1">Front Corner Assembly</h2>
+            <p class="pp-meta">2025 · UCR Highlander Racing</p>
+            <button class="ph pp-photo" data-lightbox="assets/img-01-699be88222cf.jpg" data-title="Front Corner Assembly" data-caption="Complete front suspension corner mirrored to a full front axle — 2025" aria-label="View front corner photo larger">
+              <img src="assets/img-01-699be88222cf.jpg" alt="SolidWorks model of complete front suspension corner assembly"><span class="zoom">View larger</span>
+            </button>
+            <div class="pp-body">
+              <p class="pp-lede">A complete front suspension corner modeled in SolidWorks and mirrored to build the full front axle — the master model the team used for FEA, kinematics, and manufacturing.</p>
+              <div class="specs pp-specs">
+                <div class="spec"><b>0.42° / 1 mm</b><span>Camber change verified per 1 mm shim</span></div>
+                <div class="spec"><b>Full axle</b><span>Symmetrical load distribution &amp; alignment in master CAD</span></div>
+              </div>
+              <div class="tags pp-tags"><span class="tag">SolidWorks</span><span class="tag">FEA</span><span class="tag">Kinematics</span></div>
+              <h3>Overview</h3>
+              <p>A single corner — upper and lower control arms, pushrod linkages, and outboard pickup points — only tells half the story. Loads, alignment, and steering behavior emerge at the axle level, so this project took the single-corner design and mirrored it into a complete front track model in one master CAD assembly.</p>
+              <h3>Design approach</h3>
+              <p>The mirrored assembly duplicated the exact geometry of the upper and lower control arms, pushrod linkages, and outboard pickup points from the single-corner design, keeping both sides perfectly consistent. Working in a single master model meant a change on one side propagated correctly to the other, and the symmetrical layout guaranteed even load distribution and alignment across the axle.</p>
+              <div class="pp-gallery">
+                <figure>
+                  <button class="ph" data-lightbox="assets/img-09-7f873a5a7a5b.jpg" data-title="Front Corner Assembly — Upright Close-Up" data-caption="Close-up of the upright and bearing carrier inside the wheel" aria-label="View front corner upright close-up larger">
+                    <img src="assets/img-09-7f873a5a7a5b.jpg" alt="Close-up CAD view of the front upright and bearing carrier inside the wheel"><span class="zoom">View larger</span>
+                  </button>
+                  <figcaption>Close-up of the upright and bearing carrier inside the wheel.</figcaption>
+                </figure>
+                <figure>
+                  <button class="ph" data-lightbox="assets/img-10-b48d1b5cd499.jpg" data-title="Front Corner Assembly — Brake &amp; Upright" data-caption="Angled view showing the brake caliper, rotor, and upright" aria-label="View front corner brake view larger">
+                    <img src="assets/img-10-b48d1b5cd499.jpg" alt="Angled CAD view of the front corner showing brake caliper, rotor, and upright"><span class="zoom">View larger</span>
+                  </button>
+                  <figcaption>Angled view of the same corner — brake caliper, rotor, and outboard pickup points.</figcaption>
+                </figure>
+              </div>
+              <h3>Validation</h3>
+              <p>The complete front track model enabled accurate finite element analysis and kinematics simulations that a single corner couldn't support. Camber behavior was verified directly from the model: 0.42° of camber change per 1 mm shim, giving the team a predictable, repeatable way to tune alignment at the track. Having the full axle validated digitally also made the transition from digital prototype to manufacturing the physical parts much smoother.</p>
+            </div>
+            <nav class="pp-nav" aria-label="Project navigation">
+              <a href="#/project/control-arm">← Previous: Control Arm Design</a>
+              <a href="#/project/pushrod-mounts">Next: Pushrod Mounts — Front &amp; Rear →</a>
+            </nav>
+          </div>
+        </section>
+
+        <!-- PAGE: Pushrod Mounts — Front & Rear (combined) -->
+        <section class="project-page" id="page-pushrod-mounts" hidden>
+          <div class="wrap">
+            <a class="back-link" href="#projects">← All projects</a>
+            <div class="cat" style="margin-top:14px">Formula SAE · Suspension</div>
+            <h2 class="pp-title" tabindex="-1">Pushrod Mounts — Front &amp; Rear</h2>
+            <p class="pp-meta">2025 · UCR Highlander Racing</p>
+            <button class="ph pp-photo" data-lightbox="assets/img-02-4193d09359c4.jpg" data-title="Pushrod Mounts — Front &amp; Rear" data-caption="Sheet-metal front pushrod mount with double-shear tabs — 2025" aria-label="View pushrod mount photo larger">
+              <img src="assets/img-02-4193d09359c4.jpg" alt="CAD rendering of front pushrod mount sheet metal assembly"><span class="zoom">View larger</span>
+            </button>
+            <div class="pp-body">
+              <p class="pp-lede">Sheet-metal mounts that interface the front and rear pushrods to the outboard pickup points in a double-shear configuration, as competition rules require — one shared job, solved two different ways for the front and rear packaging.</p>
+              <div class="specs pp-specs">
+                <div class="spec"><b>Front: 49.9 g + 15.5 g</b><span>Base plate + each tab, 1/16″ sheet metal</span></div>
+                <div class="spec"><b>Front: $18 / unit</b><span>Total manufacturing cost — front mount</span></div>
+                <div class="spec"><b>Rear: 23.7 g + 7.39 g</b><span>Folded base + auxiliary tab, 1/16″ sheet metal</span></div>
+                <div class="spec"><b>Rear: $15 / unit</b><span>Reduced cost through fewer components</span></div>
+              </div>
+              <div class="tags pp-tags"><span class="tag">SolidWorks</span><span class="tag">Sheet Metal</span><span class="tag">Double Shear</span><span class="tag">Lightweighting</span></div>
+              <h3>Overview</h3>
+              <p>Pushrods carry the wheel loads from the control arm up to the rockers and dampers, and the mount where the pushrod meets the arm sees those loads under constant dynamic bending. Formula SAE rules require that joint to be captured in double shear, so each mount has to wrap the rod end on both sides — strong, precisely aligned, and light, because every gram outboard is unsprung mass. The front and rear mounts meet the same requirement, but their packaging led to two distinct designs.</p>
+              <h3>Front — base plate &amp; tabs</h3>
+              <p>The front design uses a custom base plate with precision-cut slots that align and secure two individual tabs, creating the double-shear attachment. The base plate's edges are contoured to weld directly onto the tubular lower control arms, and the tabs are welded on both sides, so the load path from pushrod to arm is continuous steel with no bolted joints to loosen. The finished front mount weighs 49.9 g for the base plate plus 15.5 g per tab in 1/16″ sheet metal — about 81 g in total — and costs $18 per unit to manufacture.</p>
+              <div class="pp-gallery">
+                <figure>
+                  <button class="ph" data-lightbox="assets/img-11-12f2a97be168.jpg" data-title="Front Pushrod Mount — Base Plate" data-caption="Slotted base plate, contoured to weld onto the lower control arm" aria-label="View front pushrod base plate larger">
+                    <img src="assets/img-11-12f2a97be168.jpg" alt="Front pushrod mount base plate with precision-cut slots for the tabs"><span class="zoom">View larger</span>
+                  </button>
+                  <figcaption>The slotted base plate, its edges contoured to weld directly onto the tubular lower control arm.</figcaption>
+                </figure>
+                <figure>
+                  <button class="ph" data-lightbox="assets/img-12-bb1b6765b7bd.jpg" data-title="Front Pushrod Mount — Assembled" data-caption="Assembled front mount on the control arm, tabs in double shear" aria-label="View assembled front pushrod mount larger">
+                    <img src="assets/img-12-bb1b6765b7bd.jpg" alt="Assembled front pushrod mount on the control arm with both tabs forming the double-shear pickup"><span class="zoom">View larger</span>
+                  </button>
+                  <figcaption>The assembled front mount on the arm — both tabs slotted into the base, forming the double-shear pickup.</figcaption>
+                </figure>
+              </div>
+              <h3>Rear — folded single piece</h3>
+              <p>The rear packaging left room to rethink how the part is made. Instead of a base plate plus two separate tabs, the rear design folds a single piece of sheet metal so the base intrinsically acts as one of the required structural tabs, eliminating redundant material and aligning for direct welding onto the tubular upper control arms. A single additional precision-cut tab slots into the base and is welded on both sides to complete the outboard pickup point and the double-shear capture. The folded base weighs 23.7 g and the auxiliary tab 7.39 g in 1/16″ sheet metal, and the unit cost drops to $15 through the reduced component count.</p>
+              <div class="pp-gallery">
+                <figure>
+                  <button class="ph" data-lightbox="assets/img-13-c222f872863a.jpg" data-title="Rear Pushrod Mount — Folded Base" data-caption="Folded single-piece base — the fold forms one of the shear tabs" aria-label="View rear pushrod folded base larger">
+                    <img src="assets/img-13-c222f872863a.jpg" alt="Rear pushrod mount folded single-piece base with integrated tab and slot"><span class="zoom">View larger</span>
+                  </button>
+                  <figcaption>The folded single-piece base — the fold itself forms one of the two required shear tabs.</figcaption>
+                </figure>
+                <figure>
+                  <button class="ph" data-lightbox="assets/img-14-ab31d38a178d.jpg" data-title="Rear Pushrod Mount — Auxiliary Tab" data-caption="The single auxiliary tab that slots into the folded base" aria-label="View rear pushrod auxiliary tab larger">
+                    <img src="assets/img-14-ab31d38a178d.jpg" alt="Rear pushrod mount auxiliary tab with bolt hole and locating notch"><span class="zoom">View larger</span>
+                  </button>
+                  <figcaption>The single auxiliary tab that slots into the base to complete the pickup point.</figcaption>
+                </figure>
+                <figure class="wide">
+                  <button class="ph" data-lightbox="assets/img-15-a1d4286e1d52.jpg" data-title="Rear Pushrod Mount — Installed" data-caption="Rear mount installed, pushrod rod end captured in double shear" aria-label="View installed rear pushrod mount larger">
+                    <img src="assets/img-15-a1d4286e1d52.jpg" alt="Installed rear pushrod mount with the pushrod rod end bolted in double shear"><span class="zoom">View larger</span>
+                  </button>
+                  <figcaption>The rear mount installed on the arm, with the pushrod rod end captured in double shear.</figcaption>
+                </figure>
+              </div>
+              <h3>Results</h3>
+              <p>Together, the pair shows the same structural idea adapted to its corner: the front prioritises a robust, slotted base-and-tabs assembly for optimal load transfer under dynamic bending, while the rear streamlines manufacturing — fewer parts to cut, fixture, and weld, and less unsprung mass at the wheel — while fully satisfying the structural and dynamic constraints. Both are priced and weighted for a student racing team to run on the car.</p>
+            </div>
+            <nav class="pp-nav" aria-label="Project navigation">
+              <a href="#/project/front-corner">← Previous: Front Corner Assembly</a>
+              <a href="#/project/aloha">Next: ALOHA Teleoperation →</a>
+            </nav>
+          </div>
+        </section>
+
+        <!-- PAGE: ALOHA -->
+        <section class="project-page" id="page-aloha" hidden>
+          <div class="wrap">
+            <a class="back-link" href="#projects">← All projects</a>
+            <div class="cat" style="margin-top:14px">Robotics &amp; AI · REAL Lab</div>
+            <h2 class="pp-title" tabindex="-1">ALOHA Stationary Teleoperation</h2>
+            <p class="pp-meta">2025–26 · UCR Robotics &amp; Explainable AI Lab (REAL) — Undergraduate Research Assistant</p>
+            <button class="ph pp-photo" data-lightbox="assets/img-03-0e2aba241af2.jpg" data-title="ALOHA Stationary — REAL Lab" data-caption="ALOHA bimanual teleoperation at UCR Robotics & Explainable AI Lab" aria-label="View ALOHA photo larger">
+              <img src="assets/img-03-0e2aba241af2.jpg" alt="ALOHA stationary bimanual teleoperation robot in the REAL Lab"><span class="zoom">View larger</span>
+            </button>
+            <div class="pp-body">
+              <p class="pp-lede">Bimanual teleoperation datasets and uncertainty-aware temporal action segmentation for toy-car assembly — bridging robot hardware and deep learning, and the work behind a co-authored paper on human-to-robot transfer learning.</p>
+              <div class="specs pp-specs">
+                <div class="spec"><b>73.45 edit score</b><span>Best — human&rarr;robot transfer + gated corrector, mean over 3 seeds</span></div>
+                <div class="spec"><b>55.23 &rarr; 72.51</b><span>Robot-only &rarr; transfer (+17.28) with only 9 robot demonstrations</span></div>
+                <div class="spec"><b>83 human &middot; 9 robot</b><span>UMI hand videos pretrain MS-TCN++; 18 ALOHA videos (9 demos) fine-tune it · 22 classes</span></div>
+                <div class="spec"><b>0.755 AUROC &middot; 95.38%</b><span>Reliability analyzer AUROC; conformal coverage at the 93% target (sets avg. 17.41 / 22)</span></div>
+              </div>
+              <div class="tags pp-tags"><span class="tag">X3D</span><span class="tag">MS-TCN++</span><span class="tag">Transfer Learning</span><span class="tag">Conformal Prediction</span><span class="tag">SolidWorks</span><span class="tag">Data Pipeline</span></div>
+              <h3>Overview</h3>
+              <p>Action segmentation supports intention estimation and execution monitoring in assisted teleoperation — the robot needs to recognize what the operator is doing, step by step, to assist reliably during long-horizon assembly. The problem is data: robot demonstrations are costly and hardware-limited to collect, while human demonstrations are far easier to gather and carry rich temporal structure. At the REAL Lab, John worked on both ends of that pipeline: operating the ALOHA stationary bimanual system to generate teleoperation demonstrations of toy-car assembly, and building the models that learn to recognize each step of the task as it happens.</p>
+              <h3>Hardware &amp; data</h3>
+              <p>Dataset quality starts with the recording setup. John designed a custom 3D-modeled SolidWorks camera mount to stabilize recording, so the footage the models trained on stayed consistent across sessions. He then processed, annotated, and temporally segmented the footage — turning raw teleoperation video into labeled, multi-step action sequences across 22 toy-car assembly action classes, sharing a single 22-class vocabulary and 192-dimensional X3D-M features across the human and robot domains.</p>
+              <p>The paper&rsquo;s cross-embodiment dataset pairs two sources. The human (source) domain is UMI hand demonstrations: 83 training videos plus 20 validation videos of toy-car assembly, captured with an egocentric GoPro on a handheld UMI gripper. The robot (target) domain is ALOHA teleoperation recorded with dual wrist cameras at 480&times;640, split into 18 training videos (9 demonstrations), 26 validation videos (13 demonstrations), 34 test videos (17 demonstrations), and 46 calibration videos. That imbalance is the point: the 83 human videos contain 4,025 observed action transitions, while the 18 robot training videos contain only 436 — too few on their own to learn the long-range ordering of a 22-step assembly, whose 22&times;22 transition matrix has 484 entries. Pretraining transfers those ordering priors to the robot.</p>
+              <div class="pp-gallery">
+                <figure>
+                  <button class="ph" data-lightbox="assets/img-16-3be72f19aa4a.jpg" data-title="ALOHA Stationary — Teleoperation" data-caption="Operating the ALOHA stationary system to record assembly demonstrations" aria-label="View ALOHA teleoperation photo larger">
+                    <img src="assets/img-16-3be72f19aa4a.jpg" alt="John Dang operating the ALOHA stationary bimanual teleoperation system in the REAL Lab"><span class="zoom">View larger</span>
+                  </button>
+                  <figcaption>Operating the ALOHA stationary system to record the toy-car assembly demonstrations the models trained on.</figcaption>
+                </figure>
+                <figure>
+                  <button class="ph" data-lightbox="assets/img-17-ad85bf071bf9.jpg" data-title="ALOHA Stationary — Assembly Close-Up" data-caption="Follower gripper at work on the toy fire truck assembly" aria-label="View ALOHA assembly close-up larger">
+                    <img src="assets/img-17-ad85bf071bf9.jpg" alt="Close-up of the ALOHA follower gripper holding a part over the toy fire truck during assembly"><span class="zoom">View larger</span>
+                  </button>
+                  <figcaption>Close-up of the follower arm at work on the toy fire truck — the assembly task behind the 22 action classes.</figcaption>
+                </figure>
+              </div>
+              <h3>The framework — three parts</h3>
+              <p>The published framework combines three components. First, <b>hierarchical transfer learning</b>: MS-TCN++ (Multistage Temporal Convolutional Network) is pretrained on the human hand demonstrations and then fine-tuned on the limited robot teleoperation data, capturing both low-level actions and high-level task intentions with complete weight transfer and no architectural changes. Second, <b>conformal prediction</b>: temperature-scaled softmax probabilities are calibrated on a held-out split to produce frame-level prediction sets with statistical coverage guarantees — evaluated in both a standard (marginal) variant and a class-conditional variant with per-class thresholds. Third, <b>reliability-gated segment correction</b>: a reliability analyzer flags segments likely to be wrong, a gap-aware Transformer — also pretrained on human data and fine-tuned on robot data — proposes a corrected label, and a gate accepts the change only when the segment was flagged, the proposal confidence is at least 0.7, and the new label is transition-compatible with its neighbours. Together the system supports action recognition, temporal segmentation, intention anticipation, and mistake detection for assisted teleoperation.</p>
+              <h3>Results — what the paper reports (v2)</h3>
+              <p>All headline numbers below are from the published v2 paper (arXiv:2606.08341, revised 13 Oct 2026) and its project website, evaluated on the robot test set — 34 videos, 17 demonstrations — as a mean over 3 seeds. Training the model on robot data alone reaches a 55.23 edit score. Pretraining on human demonstrations and fine-tuning on just 9 robot demonstrations raises that to 72.51 — a gain of +17.28 — and lifts segmental F1@50 from 10.97 to 16.86 and frame accuracy from 28.48% to 34.11%. Adding the gated corrector gives the paper&rsquo;s best result: a 73.45 edit score with 34.19% frame accuracy and F1@50 of 16.89, without lowering frame accuracy.</p>
+              <p>The uncertainty results are deliberately candid. The reliability analyzer identifies incorrect segments with 0.755 AUROC. Correction only helps when it is selective: applying corrections without the gate drops the edit score to 67.86, while gated acceptance holds 73.45 — mainly by safeguarding against harmful relabeling. Conformal prediction achieves 95.38% empirical coverage at its 93% target, but the prediction sets are large, averaging 17.41 of the 22 classes (class-conditional sets run about 17&ndash;27% smaller than standard conformal sets, which average about 21 of 22). The paper&rsquo;s conclusion is balanced: human temporal pretraining clearly works, while reliable correction and informative uncertainty quantification remain hard with so little robot supervision.</p>
+              <h3>About the paper</h3>
+              <p><em>Uncertainty-Aware Action Segmentation for Human-to-Robot Assembly Teleoperation</em>, arXiv:2606.08341 [cs.RO] — first submitted 6 June 2026, v2 revised 13 October 2026. Authors: Fnu Heman, Yixuan Wang, Kolin Xu, Conner Wallace, John Dang, Akhil Joshi, Vignesh Thondikulam, Jun Sheng, Pinhas Ben-Tzvi, and Mingyu Cai. John is a co-author through his REAL Lab work on the ALOHA data pipeline and segmentation models.</p>
+              <div class="paper-links" aria-label="Paper and project website">
+                <a class="paper-link" href="https://arxiv.org/abs/2606.08341" target="_blank" rel="noopener">Paper on arXiv <span>↗</span></a>
+                <a class="paper-link" href="https://snazzy-kelpie-a9faf0.netlify.app" target="_blank" rel="noopener">Project website <span>↗</span></a>
+              </div>
+            </div>
+            <nav class="pp-nav" aria-label="Project navigation">
+              <a href="#/project/pushrod-mounts">← Previous: Pushrod Mounts — Front &amp; Rear</a>
+              <a href="#/project/bci-wheelchair">Next: BCI EEG Wheelchair →</a>
+            </nav>
+          </div>
+        </section>
+
+        <!-- PAGE: BCI -->
+        <section class="project-page" id="page-bci-wheelchair" hidden>
+          <div class="wrap">
+            <a class="back-link" href="#projects">← All projects</a>
+            <div class="cat" style="margin-top:14px">Capstone</div>
+            <h2 class="pp-title" tabindex="-1">BCI EEG Wheelchair</h2>
+            <p class="pp-meta">2025–26 · Senior Capstone, UC Riverside — Team Lead, 5 members</p>
+            <button class="ph pp-photo" data-lightbox="assets/img-04-b74b944f82d5.jpg" data-title="BCI EEG Wheelchair — Capstone" data-caption="EEG-based Brain-Computer Interface wheelchair capstone" aria-label="View BCI wheelchair photo larger">
+              <img src="assets/img-04-b74b944f82d5.jpg" alt="Brain-computer interface EEG wheelchair capstone prototype"><span class="zoom">View larger</span>
+            </button>
+            <div class="pp-body">
+              <p class="pp-lede">An EEG-based brain-computer interface wheelchair for independent mobility — driven by motor imagery, the user imagining movement, rather than following pre-set paths.</p>
+              <div class="specs pp-specs">
+                <div class="spec"><b>20 Hz · OpenBCI</b><span>Ganglion headset, FFT filtering, Python → Arduino Uno</span></div>
+                <div class="spec"><b>Dual 350 W · 24 V 50 Ah</b><span>43 A H-bridges, chain drive, 55-tooth sprocket at 3.0 FOS</span></div>
+              </div>
+              <div class="tags pp-tags"><span class="tag">OpenBCI</span><span class="tag">Python</span><span class="tag">Arduino / C++</span><span class="tag">Team Lead — 5</span></div>
+              <h3>Overview</h3>
+              <p>For people who can't use a joystick, a wheelchair's controls are the barrier to independent mobility. This capstone set out to remove the hands from the loop entirely: read the user's intent from EEG signals and turn it into driving commands, with the user steering live rather than selecting from pre-programmed routes.</p>
+              <h3>Design approach</h3>
+              <p>Early on, a design matrix compared control paradigms and selected motor imagery over evoked potentials for live control. The signal chain runs from an OpenBCI Ganglion headset sampling at 20 Hz, through FFT filtering in Python, which sends directional commands over serial to an Arduino Uno driving two H-bridge controllers. On the mechanical side, dual 350 W motors on a 24 V 50 Ah supply drive the wheels through a chain drive with a 55-tooth sprocket sized at a 3.0 factor of safety, mounted with a custom PLA sprocket mount fastening the sprockets to the wheel hub. Ultrasonic sensors trigger autonomous deceleration for collision avoidance, so the chair protects the user even when a command is late or wrong.</p>
+              <div class="pp-gallery">
+                <figure>
+                  <button class="ph fit" data-lightbox="assets/img-18-74af81b124e2.jpg" data-title="BCI EEG Wheelchair — Live EEG" data-caption="Live EEG traces in the OpenBCI GUI during motor imagery" aria-label="View BCI EEG traces larger">
+                    <img src="assets/img-18-74af81b124e2.jpg" alt="Live EEG channel traces in the OpenBCI GUI during motor imagery"><span class="zoom">View larger</span>
+                  </button>
+                  <figcaption>Live EEG traces in the OpenBCI GUI — channels 2 and 3 carrying the motor-imagery signal.</figcaption>
+                </figure>
+                <figure>
+                  <button class="ph" data-lightbox="assets/img-19-ad59891138ec.jpg" data-title="BCI EEG Wheelchair — System Diagram" data-caption="Signal chain: Ganglion → OpenBCI GUI → Python → Arduino → motors" aria-label="View BCI system diagram larger">
+                    <img src="assets/img-19-ad59891138ec.jpg" alt="System diagram of the BCI wheelchair signal chain from OpenBCI Ganglion through Python and Arduino to the motors"><span class="zoom">View larger</span>
+                  </button>
+                  <figcaption>The full signal chain: Ganglion headset → OpenBCI GUI → Python environment → Arduino C++ → drive motors.</figcaption>
+                </figure>
+              </div>
+              <h3>Leading the team</h3>
+              <p>John led the 5-member team from September 2025 to March 2026, managing the timeline with Gantt charts and validating decisions through weekly technical presentations and memo reports to faculty advisors — the same design, documentation, and review discipline the project needed to integrate EEG signal processing, embedded control, and a drivetrain into one working chair.</p>
+            </div>
+            <nav class="pp-nav" aria-label="Project navigation">
+              <a href="#/project/aloha">← Previous: ALOHA Teleoperation</a>
+              <a href="#/project/airplane-bracket">Next: Airplane Bracket →</a>
+            </nav>
+          </div>
+        </section>
+        <!-- PAGE: Airplane Bracket -->
+        <section class="project-page" id="page-airplane-bracket" hidden>
+          <div class="wrap">
+            <a class="back-link" href="#projects">← All projects</a>
+            <div class="cat" style="margin-top:14px">Design Optimization</div>
+            <h2 class="pp-title" tabindex="-1">Airplane Bracket</h2>
+            <p class="pp-meta">2024 · Topology Optimization for Metal Additive Manufacturing</p>
+            <button class="ph pp-photo" data-lightbox="assets/img-05-a6462d899e8d.jpg" data-title="Airplane Bracket" data-caption="Topology-optimized airplane bracket (B-0426-M) — printed prototype, 2024" aria-label="View airplane bracket photo larger">
+              <img src="assets/img-05-a6462d899e8d.jpg" alt="Topology-optimized airplane bracket prototype with two pin bores and a bolt base"><span class="zoom">View larger</span>
+            </button>
+            <div class="pp-body">
+              <p class="pp-lede">Topology optimization of a Titanium 6Al-4V aerospace bracket (B-0426-M), redesigned for metal additive manufacturing in Fusion 360 instead of being machined from solid stock.</p>
+              <div class="specs pp-specs">
+                <div class="spec"><b>10 kN ↑ · 5 kN →</b><span>Pin loads; 4.5 kN bolt preload over 20 mm</span></div>
+                <div class="spec"><b>1.5 FOS target</b><span>Validated with static stress simulation</span></div>
+              </div>
+              <div class="tags pp-tags"><span class="tag">Fusion 360</span><span class="tag">Generative Design</span><span class="tag">FEA</span></div>
+              <h3>Overview</h3>
+              <p>A machined bracket carries the shape of its manufacturing process: material stays wherever the cutter couldn't reach, not where the loads need it. Moving the part to metal additive manufacturing removes that constraint — but only if the design is re-thought for the process. This project took the B-0426-M bracket through a full topology optimization workflow to find the shape the loads actually require.</p>
+              <h3>Design approach</h3>
+              <p>Preserve regions were defined at the mounting interfaces, so the optimizer couldn't touch the geometry that has to mate with the rest of the assembly, and obstacle geometries prevented any interference with surrounding parts. The bracket was loaded with 10 kN upward and 5 kN lateral pin loads, plus a 4.5 kN bolt preload distributed over 20 mm, against a 1.5 factor-of-safety target.</p>
+              <h3>Validation</h3>
+              <p>The final topology was evaluated by plotting mass against von Mises stress across design candidates — the trade curve that shows exactly what each gram saved costs in stress — followed by a complete static stress simulation to validate the chosen design before it would ever be printed.</p>
+              <button class="ph pp-photo" data-lightbox="assets/img-20-28d390bb67d2.jpg" data-title="Airplane Bracket — Stress Analysis" data-caption="Von Mises stress simulation of the topology-optimized bracket in Fusion 360" aria-label="View airplane bracket stress analysis larger">
+                <img src="assets/img-20-28d390bb67d2.jpg" alt="Fusion 360 von Mises stress analysis of the topology-optimized airplane bracket"><span class="zoom">View larger</span>
+              </button>
+            </div>
+            <nav class="pp-nav" aria-label="Project navigation">
+              <a href="#/project/bci-wheelchair">← Previous: BCI EEG Wheelchair</a>
+              <a href="#/project/robotic-arm">Next: Robotic Arm Component →</a>
+            </nav>
+          </div>
+        </section>
+
+        <!-- PAGE: Robotic Arm -->
+        <section class="project-page" id="page-robotic-arm" hidden>
+          <div class="wrap">
+            <a class="back-link" href="#projects">← All projects</a>
+            <div class="cat" style="margin-top:14px">Design Optimization</div>
+            <h2 class="pp-title" tabindex="-1">Robotic Arm Component</h2>
+            <p class="pp-meta">2024 · Shape Optimization &amp; FEA</p>
+            <button class="ph pp-photo" data-lightbox="assets/img-06-ac85d72f4296.jpg" data-title="Robotic Arm Component" data-caption="Shape optimization and von Mises stress analysis — 2024" aria-label="View robotic arm component photo larger">
+              <img src="assets/img-06-ac85d72f4296.jpg" alt="Robotic arm component with von Mises stress analysis results"><span class="zoom">View larger</span>
+            </button>
+            <div class="pp-body">
+              <p class="pp-lede">Shape optimization for a 50% mass reduction — removing material from low-stress areas and trimming stress concentrators, then proving with FEA that the lighter part is still comfortably strong.</p>
+              <div class="specs pp-specs">
+                <div class="spec"><b>85.541 MPa</b><span>Max von Mises stress; 0.321 mm peak displacement</span></div>
+                <div class="spec"><b>5.88 min FOS</b><span>Well above the 1.5 minimum requirement</span></div>
+              </div>
+              <div class="tags pp-tags"><span class="tag">Shape Optimization</span><span class="tag">FEA</span><span class="tag">Lightweighting</span></div>
+              <h3>Overview</h3>
+              <p>On a robotic arm, mass is expensive twice: the part itself weighs more, and every gram at the end of the arm demands more torque, bigger actuators, and more energy to move. This project took an existing arm component and cut its mass in half through shape optimization, guided at every step by stress analysis rather than guesswork.</p>
+              <h3>Design approach</h3>
+              <p>The optimization removed material from low-stress areas — the regions FEA showed were barely working — and trimmed stress concentrators, the sharp features where cracks start. The result keeps material only where the load path needs it, which also simplifies the geometry the part has to be manufactured from.</p>
+              <div class="pp-gallery">
+                <figure>
+                  <button class="ph fit" data-lightbox="assets/img-21-89dd66ff0f6b.jpg" data-title="Robotic Arm Component — Before" data-caption="The component before shape optimization" aria-label="View robotic arm component before optimization larger">
+                    <img src="assets/img-21-89dd66ff0f6b.jpg" alt="Robotic arm component before shape optimization, a solid plate with two bores"><span class="zoom">View larger</span>
+                  </button>
+                  <figcaption>Before — the original solid component.</figcaption>
+                </figure>
+                <figure>
+                  <button class="ph fit" data-lightbox="assets/img-22-bea30a62cdc1.jpg" data-title="Robotic Arm Component — After" data-caption="The component after shape optimization" aria-label="View robotic arm component after optimization larger">
+                    <img src="assets/img-22-bea30a62cdc1.jpg" alt="Robotic arm component after shape optimization, with lightening pockets cut into low-stress areas"><span class="zoom">View larger</span>
+                  </button>
+                  <figcaption>After — material removed from low-stress areas, stress concentrators trimmed.</figcaption>
+                </figure>
+              </div>
+              <h3>Validation</h3>
+              <p>The final static stress analysis validated the design: maximum von Mises stress of 85.541 MPa with 0.321 mm peak displacement, and a minimum factor of safety of 5.88 — well above the 1.5 minimum requirement. With that much margin, the analysis also highlighted opportunities for further weight reduction or alternative material selection, while the optimized shape already improves manufacturability and cost-efficiency.</p>
+            </div>
+            <nav class="pp-nav" aria-label="Project navigation">
+              <a href="#/project/airplane-bracket">← Previous: Airplane Bracket</a>
+              <a href="#/project/coat-hook">Next: Coat Hook →</a>
+            </nav>
+          </div>
+        </section>
+
+        <!-- PAGE: Coat Hook -->
+        <section class="project-page" id="page-coat-hook" hidden>
+          <div class="wrap">
+            <a class="back-link" href="#projects">← All projects</a>
+            <div class="cat" style="margin-top:14px">Design Optimization</div>
+            <h2 class="pp-title" tabindex="-1">Coat Hook</h2>
+            <p class="pp-meta">2024 · Comparative Generative Design Study</p>
+            <button class="ph pp-photo" data-lightbox="assets/img-07-b6de231d8a4d.jpg" data-title="Coat Hook — Generative Design Study" data-caption="Comparative generative design across materials and processes — 2024" aria-label="View coat hook photo larger">
+              <img src="assets/img-07-b6de231d8a4d.jpg" alt="Generative design iterations of a coat hook component"><span class="zoom">View larger</span>
+            </button>
+            <div class="pp-body">
+              <p class="pp-lede">A comparative generative-design study across materials and manufacturing processes, run against a 4.0 factor-of-safety target — a small part used to answer a general question: which material and process actually win?</p>
+              <div class="specs pp-specs">
+                <div class="spec"><b>8.46 FOS</b><span>Die-cast Aluminum AlSi10Mg — 0.2 mm max displacement</span></div>
+                <div class="spec"><b>61–62 g</b><span>PA 11 polymer iterations — lighter, but weaker</span></div>
+              </div>
+              <div class="tags pp-tags"><span class="tag">Generative Design</span><span class="tag">Additive Mfg</span><span class="tag">Die Casting</span></div>
+              <h3>Overview</h3>
+              <p>A coat hook is a deliberately simple part, which makes it a clean test bed: one load case, one safety target, and no confounding geometry. The real subject of the study isn't the hook — it's the trade-off between polymer and metal, and between additive manufacturing and die casting, when a generative design tool is allowed to explore all four combinations.</p>
+              <h3>Design approach</h3>
+              <p>The study systematically compared PA 11 polymer with Aluminum AlSi10Mg, testing both additive manufacturing and die casting for each, and optimized every variant for weight and mechanical properties against the same 4.0 factor-of-safety target — so the differences in the results come from the material and process, not from moving goalposts.</p>
+              <h3>Results</h3>
+              <p>Die-cast Aluminum AlSi10Mg came out ahead with an 8.46 factor of safety — more than double the target — and just 0.2 mm of maximum displacement. The PA 11 polymer iterations were lighter at 61–62 g, but weaker. The conclusion: aluminum alloy paired with die casting provided the optimal mechanical performance, and the study quantifies exactly what the lighter polymer option would have cost in strength.</p>
+              <div class="pp-gallery">
+                <figure>
+                  <button class="ph" data-lightbox="assets/img-23-54ae2f649d3b.jpg" data-title="Coat Hook — Generative Iteration" data-caption="Another generative iteration from the material and process comparison" aria-label="View coat hook generative iteration larger">
+                    <img src="assets/img-23-54ae2f649d3b.jpg" alt="Another generative design iteration of the coat hook with load arrows at the hook"><span class="zoom">View larger</span>
+                  </button>
+                  <figcaption>Another generative iteration from the comparison set, with the same load case applied at the hook.</figcaption>
+                </figure>
+                <figure>
+                  <button class="ph" data-lightbox="assets/img-24-739bdc9e1da9.jpg" data-title="Coat Hook — Stress Analysis" data-caption="Von Mises stress result for one of the compared iterations" aria-label="View coat hook stress analysis larger">
+                    <img src="assets/img-24-739bdc9e1da9.jpg" alt="Von Mises stress analysis of a coat hook iteration, mostly low stress shown in blue and cyan"><span class="zoom">View larger</span>
+                  </button>
+                  <figcaption>Von Mises stress result for one of the compared iterations.</figcaption>
+                </figure>
+                <figure class="wide">
+                  <button class="ph" data-lightbox="assets/img-25-a643257ee037.jpg" data-title="Coat Hook — Stress Analysis, Second Iteration" data-caption="Von Mises stress result for another compared iteration" aria-label="View second coat hook stress analysis larger">
+                    <img src="assets/img-25-a643257ee037.jpg" alt="Von Mises stress analysis of a second coat hook iteration, shown in blue at a higher stress scale"><span class="zoom">View larger</span>
+                  </button>
+                  <figcaption>Stress result for another iteration — the comparison that separated the polymer and aluminum candidates.</figcaption>
+                </figure>
+              </div>
+            </div>
+            <nav class="pp-nav" aria-label="Project navigation">
+              <a href="#/project/robotic-arm">← Previous: Robotic Arm Component</a>
+              <a href="#projects" class="mid">All projects →</a>
+            </nav>
+          </div>
+        </section>
+  </div>
+
+  <!-- ABOUT PAGE -->
+  <div id="aboutView" hidden>
+    <section class="about-page" aria-labelledby="aboutTitle">
+      <div class="wrap">
+        <a class="back-link" href="#top">← Back to home</a>
+        <h2 class="pp-title" id="aboutTitle" tabindex="-1">About Me</h2>
+
+        <div class="pp-body">
+            <h3>How I got here</h3>
+            <p>The first moment I remember wanting to pursue mechanical engineering was working with my dad on his car as a kid. Doing basic maintenance and modding with him got me thinking about how parts and systems could be optimized — and it gave me a lasting passion for problem solving. I liked taking something apart, understanding why it worked the way it did, and figuring out how it could work better. Watching <em>Iron Man</em> fed the same spark — seeing someone build extraordinary machines in a garage made engineering feel less like a school subject and more like something I actually wanted to do.</p>
+            <p>That carried straight into hardware that has to survive real loads. With UCR Highlander Racing, I spent three years on the suspension team — sizing control arm tubing for buckling, verifying camber change per shim, modeling a full front corner for FEA and kinematics, and releasing drawings with GD&amp;T so what we welded matched what we analyzed. That work taught me to design for manufacturing and validation at the same time, not as an afterthought.</p>
+            <p>At the Robotics &amp; Explainable AI Lab (REAL), that hardware background met machine learning. I operated the ALOHA bimanual teleoperation system to generate demonstration datasets, built a custom camera mount to keep recordings consistent, and trained temporal action segmentation models — work that became a co-authored paper, <em>Uncertainty-Aware Action Segmentation for Human-to-Robot Assembly Teleoperation</em>.</p>
+
+            <h3>What I do now</h3>
+            <p>At Meta Superintelligence Labs, I lead a 30-operator robotics data team. My work sits between the physical setup and the data it produces: designing manipulation tasks, workspace layouts, and SOPs, holding trajectory quality to the standard autonomous policy training requires, troubleshooting hardware and software faults, interviewing and onboarding new hires to grow capacity, and training new team leads. Earlier improvements to cable routing, camera mounts, inventory tracking, and scheduling helped lift single-shift fleet efficiency from 22% to 50%.</p>
+
+            <h3>My edge</h3>
+            <p>Most mechanical engineers never train a model, and most ML teams never machine a part. I do both — and I lead the people who run the operation. That combination helps me tell whether a robot is failing on hardware, task design, or data, and then lead the fix. I brought the same approach to my senior capstone, leading a 5-person team building an EEG-controlled BCI wheelchair, with Gantt-chart planning and weekly technical presentations to faculty advisors.</p>
+
+            <h3>Hands-on, not just CAD</h3>
+            <p>I build what I design: CNC machining and manual lathe / mill work, in-house welding and soldering, and 3D printing in PLA and PETG. I am SolidWorks CSWA certified and also work in Fusion 360, FEA, and GD&amp;T. I speak English and Mandarin, with conversational Cantonese and Vietnamese — useful when leading and training diverse operator teams.</p>
+
+            <h3>How I work</h3>
+            <p>Beyond the technical skills, what tends to matter most on a team is how someone works day to day. This is the approach I try to bring to every role:</p>
+            <ul>
+              <li><b>Own the problem end to end</b> — from diagnosing whether a failure is hardware, task design, or data, through to leading the fix and checking that it held.</li>
+              <li><b>Make the work repeatable</b> — writing SOPs, workspace layouts, and quality standards so good results do not depend on one person being in the room.</li>
+              <li><b>Communicate clearly and often</b> — weekly technical presentations and memo reports as a capstone lead, and regular onboarding and feedback while leading operators at Meta.</li>
+              <li><b>Grow the team&rsquo;s capacity</b> — interviewing and onboarding new hires, and training new team leads, not just completing my own tasks.</li>
+              <li><b>Stay hands-on under pressure</b> — troubleshooting hardware and software faults on the floor, and improving the physical setup — cable routing, camera mounts, scheduling — when that is what is limiting the data.</li>
+            </ul>
+
+            <h3>Outside of work</h3>
+            <p>Outside of work, I enjoy spending time with my girlfriend and friends. My hobbies are basketball, golf, and motorsport — the car interest that started in my dad&rsquo;s garage never really left. I am also a foodie who loves trying new cuisines and restaurants, and I am usually the one suggesting somewhere new to try.</p>
+
+            <h3>What I am looking for</h3>
+            <p>I am open to opportunities across California in robotics, mechanical design, and hardware — roles where designing the hardware, understanding the data it produces, and leading a team to execute are all part of the same job.</p>
+
+            <div class="paper-links" aria-label="About page links" style="margin-top:20px">
+              <a class="paper-link" href="#projects">View projects <span>→</span></a>
+              <a class="paper-link" href="#experience">Experience <span>→</span></a>
+              <a class="paper-link" href="https://arxiv.org/abs/2606.08341" target="_blank" rel="noopener">Paper on arXiv <span>↗</span></a>
+              <a class="paper-link" href="mailto:johntndang@gmail.com">johntndang@gmail.com <span>↗</span></a>
+            </div>
+        </div>
+
+        <nav class="pp-nav" aria-label="About navigation">
+          <a href="#top" class="mid">← Back to home</a>
+          <a href="#projects">See projects →</a>
+        </nav>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer><div class="wrap"><span>© John Dang — Mechanical Engineering Portfolio</span><span>UC Riverside ’26</span></div></footer>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <div class="lb-inner">
+    <img id="lbImg" alt="">
+    <div class="lb-cap"><p><b id="lbTitle"></b><span id="lbCaption"></span></p><button class="btn lb-close" id="lbClose">Close ✕</button></div>
+  </div>
+</div>
+
+<script>
+// Filter
+(function(){
+  var btns=document.querySelectorAll('.filter-btn');
+  var cards=document.querySelectorAll('.project');
+  var countEl=document.getElementById('resultCount');
+  var noRes=document.getElementById('noResults');
+  btns.forEach(function(btn){
+    btn.addEventListener('click',function(){
+      btns.forEach(function(b){b.setAttribute('aria-pressed','false')});
+      btn.setAttribute('aria-pressed','true');
+      var f=btn.getAttribute('data-filter'); var n=0;
+      cards.forEach(function(c){
+        var show=(f==='all'||c.getAttribute('data-cat')===f);
+        c.hidden=!show; if(show)n++;
+      });
+      countEl.textContent=n+(n===1?' project':' projects');
+      noRes.style.display=n===0?'block':'none';
+    });
+  });
+})();
+// Expand cards
+document.querySelectorAll('.project').forEach(function(card){
+  var btn=card.querySelector('.expand-btn'); if(!btn)return;
+  btn.addEventListener('click',function(){
+    var open=card.classList.toggle('expanded');
+    btn.setAttribute('aria-expanded',open?'true':'false');
+    btn.firstChild.textContent=open?'Show less ':'Full description ';
+  });
+});
+// Lightbox
+(function(){
+  var lb=document.getElementById('lightbox'), img=document.getElementById('lbImg'), title=document.getElementById('lbTitle'), cap=document.getElementById('lbCaption'), closeBtn=document.getElementById('lbClose');
+  var lastFocus=null;
+  function open(src,t,c,alt){ lastFocus=document.activeElement; img.src=src; img.alt=alt||t; title.textContent=t; cap.textContent=c; lb.classList.add('open'); document.body.style.overflow='hidden'; closeBtn.focus(); }
+  function close(){ lb.classList.remove('open'); document.body.style.overflow=''; img.removeAttribute('src'); if(lastFocus)lastFocus.focus(); }
+  document.querySelectorAll('[data-lightbox]').forEach(function(el){
+    el.addEventListener('click',function(){ open(el.getAttribute('data-lightbox'), el.getAttribute('data-title'), el.getAttribute('data-caption'), el.querySelector('img')?el.querySelector('img').alt:''); });
+  });
+  closeBtn.addEventListener('click',close);
+  lb.addEventListener('click',function(e){ if(e.target===lb) close(); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&lb.classList.contains('open')) close(); });
+})();
+// Scrollspy + hover highlight
+// The previous version used an IntersectionObserver with a narrow
+// -40% / -55% rootMargin band in the middle of the viewport, so the
+// highlight lagged badly: Skills stayed lit well into the Projects
+// section until Projects happened to cross that thin middle band.
+// This version uses a reading line just under the sticky header
+// (the last section whose top has passed that line is current),
+// and hovering a section temporarily highlights its nav pill.
+(function(){
+  var links=Array.prototype.slice.call(document.querySelectorAll('[data-spy]'));
+  if(!links.length)return;
+  var order=['skills','projects','experience','contact'];
+  var sections=order.map(function(id){return document.getElementById(id)}).filter(Boolean);
+  if(!sections.length)return;
+  var homeView=document.getElementById('homeView');
+  var scrollActiveId=null;
+  var hoverId=null;
+  var ticking=false;
+  function isHomeVisible(){return !homeView||!homeView.hidden}
+  function applyActive(){
+    if(!isHomeVisible()){links.forEach(function(l){l.classList.remove('active')});return}
+    var effective=hoverId||scrollActiveId;
+    links.forEach(function(l){l.classList.toggle('active',l.getAttribute('data-spy')===effective)});
+  }
+  function computeScrollActive(){
+    if(!isHomeVisible()){scrollActiveId=null;hoverId=null;applyActive();return}
+    var doc=document.documentElement;
+    var scrollTop=window.pageYOffset||doc.scrollTop||0;
+    var maxScroll=Math.max(0,doc.scrollHeight-window.innerHeight);
+    if(maxScroll>0&&scrollTop>=maxScroll-6){scrollActiveId=order[order.length-1];applyActive();return}
+    var readingLine=180;
+    var candidate=null;
+    for(var i=0;i<sections.length;i++){
+      var rect=sections[i].getBoundingClientRect();
+      if(rect.top<=readingLine)candidate=sections[i].id;else break;
+    }
+    scrollActiveId=candidate;
+    applyActive();
+  }
+  function onScrollResize(){
+    if(ticking)return;ticking=true;
+    if(window.requestAnimationFrame){window.requestAnimationFrame(function(){ticking=false;computeScrollActive()})}
+    else{ticking=false;computeScrollActive()}
+  }
+  sections.forEach(function(sec){
+    sec.addEventListener('mouseenter',function(){hoverId=sec.id;applyActive()});
+    sec.addEventListener('mouseleave',function(){if(hoverId===sec.id)hoverId=null;computeScrollActive()});
+  });
+  window.addEventListener('scroll',onScrollResize,{passive:true});
+  window.addEventListener('resize',onScrollResize);
+  window.addEventListener('hashchange',function(){setTimeout(computeScrollActive,60)});
+  document.addEventListener('click',function(){setTimeout(computeScrollActive,80)});
+  computeScrollActive();
+})();
+</script>
+<script>
+// Project page router — home is the landing page; each project is its own page at #/project/<slug>.
+// Navigation is driven by click handlers that switch the view directly, so it works even where
+// changing the URL hash (and the hashchange event) is unreliable, e.g. inside an embedded preview
+// frame. The hash is still updated on a best-effort basis so deep links and back/forward keep working.
+(function(){
+  var home=document.getElementById('homeView');
+  var about=document.getElementById('aboutView');
+  var pages={};
+  document.querySelectorAll('.project-page').forEach(function(p){ pages[p.id.replace('page-','')]=p; });
+  var baseTitle=document.title;
+  var aliases={'front-pushrod':'pushrod-mounts','rear-pushrod':'pushrod-mounts'};
+  var current=null; // null = home, 'about' = about page, otherwise the visible project slug
+
+  function hideAllPages(){ Object.keys(pages).forEach(function(k){ pages[k].hidden=true; }); if(about) about.hidden=true; }
+  function setAboutNav(on){
+    var link=document.getElementById('aboutNavLink');
+    if(link) link.classList.toggle('active',!!on);
+    if(on){ document.querySelectorAll('[data-spy]').forEach(function(l){ l.classList.remove('active'); }); }
+  }
+  function resolveSlug(slug){ return aliases[slug]||slug; }
+
+  function showHome(anchor){
+    current=null;
+    hideAllPages(); home.hidden=false; document.title=baseTitle; setAboutNav(false);
+    if(anchor && anchor!=='top'){
+      var el=document.getElementById(anchor);
+      if(el){ el.scrollIntoView(); return; }
+    }
+    window.scrollTo(0,0);
+  }
+  function showAbout(){
+    current='about';
+    home.hidden=true; hideAllPages(); if(about) about.hidden=false; setAboutNav(true);
+    document.title='About — John Dang';
+    window.scrollTo(0,0);
+    var h=document.getElementById('aboutTitle');
+    if(h) h.focus({preventScroll:true});
+  }
+  function showProject(slug){
+    slug=resolveSlug(slug);
+    var page=pages[slug]; if(!page){ showHome(null); return; }
+    current=slug;
+    home.hidden=true; hideAllPages(); page.hidden=false; setAboutNav(false);
+    var h=page.querySelector('.pp-title');
+    document.title=(h?h.textContent:'Project')+' — John Dang';
+    window.scrollTo(0,0);
+    if(h) h.focus({preventScroll:true});
+  }
+  function setHash(hash){
+    // Best effort only: in a sandboxed frame both of these can throw or be ignored,
+    // and navigation must not depend on them succeeding.
+    try{ history.pushState(null,'',hash); return; }catch(e){}
+    try{ location.hash=hash; }catch(e){}
+  }
+  function parseProjectHash(hash){
+    var m=(hash||'').match(/^#\/project\/([a-z0-9-]+)$/);
+    return m?m[1]:null;
+  }
+  function route(){
+    var hash='';
+    try{ hash=location.hash||''; }catch(e){}
+    if(hash==='#/about'){ if(current!=='about') showAbout(); return; }
+    var slug=parseProjectHash(hash);
+    if(slug){ if(current!==resolveSlug(slug)) showProject(slug); return; }
+    if(hash.indexOf('#/')===0){ showHome(null); return; }
+    var anchor=hash.replace(/^#\/?/,'');
+    if(current!==null || home.hidden) showHome(anchor||null);
+    else if(anchor){ var el=document.getElementById(anchor); if(el) el.scrollIntoView(); }
+  }
+
+  // Direct click navigation: switch views on click instead of waiting for a hash change.
+  document.addEventListener('click',function(e){
+    var a=e.target && e.target.closest ? e.target.closest('a[href]') : null;
+    if(!a) return;
+    var href=a.getAttribute('href')||'';
+    if(href==='#/about'){
+      e.preventDefault();
+      showAbout();
+      setHash(href);
+      return;
+    }
+    var slug=parseProjectHash(href);
+    if(slug){
+      e.preventDefault();
+      showProject(slug);
+      setHash(href);
+      return;
+    }
+    if(href.charAt(0)==='#' && current!==null){
+      // On a project or about page, plain in-page links (nav, back, prev/next "all projects")
+      // must return to the home view first, then scroll to the anchor.
+      e.preventDefault();
+      var anchor=href.replace(/^#\/?/,'');
+      showHome(anchor||null);
+      setHash(href==='#top'?'#top':href);
+    }
+  });
+
+  window.addEventListener('hashchange',route);
+  window.addEventListener('popstate',route);
+  route();
+})();
+</script>
+</body>
+</html>
