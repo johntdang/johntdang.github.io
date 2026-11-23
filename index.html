@@ -86,10 +86,15 @@ header.site{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--
 .glance-link{font-size:13px;color:var(--muted);text-decoration:none;white-space:nowrap;transition:color .18s}
 .glance-link:hover{color:var(--green);text-decoration:underline;text-decoration-color:var(--green);text-underline-offset:3px}
 .facts{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line2);border:1.5px solid var(--ink);border-radius:14px;overflow:hidden;margin:0;box-shadow:var(--shadow)}
-.fact{background:var(--surface);padding:18px 16px;border-top:4px solid var(--green)}
+a.fact{background:var(--surface);padding:18px 16px;border-top:4px solid var(--green);text-decoration:none;color:inherit;display:block;transition:background .18s}
+a.fact:hover{background:var(--green-soft)}
+a.fact:hover .org{text-decoration:underline;text-decoration-color:var(--green);text-underline-offset:3px}
+a.fact:focus-visible{outline:2px solid var(--green);outline-offset:-2px}
 .fact .org{display:block;font-family:"Newsreader",Georgia,serif;font-size:20px;font-weight:700;line-height:1.15;color:var(--green)}
 .fact .role{display:block;font-size:13.5px;font-weight:600;color:var(--ink2);line-height:1.35;margin-top:6px}
 .fact .detail{font-size:12.5px;color:var(--muted);line-height:1.45;display:block;margin-top:3px}
+.fact .go{display:inline-flex;align-items:center;gap:4px;font-size:12px;font-weight:700;color:var(--green);margin-top:10px;letter-spacing:.01em}
+.job-group,.job-sub,.edu .card{scroll-margin-top:96px}
 @media(max-width:760px){.facts{grid-template-columns:1fr 1fr}}
 @media(max-width:420px){.facts{grid-template-columns:1fr}}
 
@@ -263,7 +268,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
       <a href="#experience" data-spy="experience">Experience</a>
       <a href="#contact" data-spy="contact">Contact</a>
       <a href="#/about" id="aboutNavLink">About</a>
-      <a class="btn primary" href="#resume">Résumé ↓</a>
+      <a class="btn primary" href="assets/John_Dang_Resume.pdf" target="_blank" rel="noopener">Résumé ↓</a>
     </nav>
   </div>
 </header>
@@ -278,12 +283,12 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
       <span class="chip">Design &amp; Manufacturing</span><span class="chip">Vehicle Dynamics</span><span class="chip">Hardware + AI</span><span class="chip">SolidWorks · CSWA Certified</span>
     </div>
     <div class="glance">
-      <div class="glance-head"><span class="kicker">Experience at a glance</span><a class="glance-link" href="#experience">Full experience ↓</a></div>
-      <div class="facts" aria-label="Experience at a glance">
-        <div class="fact"><span class="org">Meta</span><span class="role">Team Lead — Robotics Data Operations</span><span class="detail">Superintelligence Labs · Menlo Park<br>Aug 2026 — Present</span></div>
-        <div class="fact"><span class="org">REAL Lab</span><span class="role">Research Assistant</span><span class="detail">Robotics &amp; Explainable AI Lab, UC Riverside<br>Sept 2025 — July 2026</span></div>
-        <div class="fact"><span class="org">Formula SAE</span><span class="role">Suspension Associate Engineer</span><span class="detail">UCR Highlander Racing<br>Jan 2024 — June 2026</span></div>
-        <div class="fact"><span class="org">UC Riverside</span><span class="role">B.S. Mechanical Engineering ’26</span><span class="detail">Design &amp; Manufacturing concentration<br>Vehicle dynamics, robotics &amp; hardware</span></div>
+      <div class="glance-head"><span class="kicker">Experience at a glance</span></div>
+      <div class="facts" aria-label="Experience at a glance — select an item to jump to its full description">
+        <a class="fact" href="#exp-meta"><span class="org">Meta</span><span class="role">Team Lead — Robotics Data Operations</span><span class="detail">Superintelligence Labs · Menlo Park<br>Aug 2026 — Present</span></a>
+        <a class="fact" href="#exp-real"><span class="org">REAL Lab</span><span class="role">Research Assistant</span><span class="detail">Robotics &amp; Explainable AI Lab, UC Riverside<br>Sept 2025 — July 2026</span></a>
+        <a class="fact" href="#exp-formula"><span class="org">Formula SAE</span><span class="role">Suspension Associate Engineer</span><span class="detail">UCR Highlander Racing<br>Jan 2024 — June 2026</span></a>
+        <a class="fact" href="#exp-education"><span class="org">UC Riverside</span><span class="role">B.S. Mechanical Engineering ’26</span><span class="detail">Design &amp; Manufacturing concentration<br>Vehicle dynamics, robotics &amp; hardware</span></a>
       </div>
     </div>
   </div>
@@ -325,7 +330,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
           </button>
           <div class="pbody">
             <div><div class="cat">Formula SAE · Suspension</div><div class="ptop"><h3>Control Arm Design</h3><span class="year">2023</span></div></div>
-            <p>Double wishbone control arm in 4130 steel normalized tubing, engineered for a 5,000 N critical buckling load.</p>
+            <p>I designed a double wishbone control arm in 4130 steel normalized tubing, engineered for a 5,000 N critical buckling load.</p>
             <a class="view-link" href="#/project/control-arm">More details <span aria-hidden="true">→</span></a>
           </div>
         </article>
@@ -337,7 +342,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
           </button>
           <div class="pbody">
             <div><div class="cat">Formula SAE · Suspension</div><div class="ptop"><h3>Front Corner Assembly</h3><span class="year">2025</span></div></div>
-            <p>Complete front suspension corner modeled in SolidWorks and mirrored to build the full front axle for FEA and kinematics.</p>
+            <p>I modeled a complete front suspension corner in SolidWorks and mirrored it to build the full front axle for FEA and kinematics.</p>
             <a class="view-link" href="#/project/front-corner">More details <span aria-hidden="true">→</span></a>
           </div>
         </article>
@@ -349,7 +354,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
           </button>
           <div class="pbody">
             <div><div class="cat">Formula SAE · Suspension</div><div class="ptop"><h3>Pushrod Mounts — Front &amp; Rear</h3><span class="year">2025</span></div></div>
-            <p>Sheet-metal mounts interfacing the pushrods to the outboard pickup points in double shear — a slotted base-and-tabs design at the front, and a folded single-piece design at the rear.</p>
+            <p>I designed sheet-metal mounts that interface the pushrods to the outboard pickup points in double shear — a slotted base-and-tabs design I made for the front, and a folded single-piece design I made for the rear.</p>
             <a class="view-link" href="#/project/pushrod-mounts">More details <span aria-hidden="true">→</span></a>
           </div>
         </article>
@@ -361,7 +366,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
           </button>
           <div class="pbody">
             <div><div class="cat">Robotics &amp; AI · REAL Lab</div><div class="ptop"><h3>ALOHA Stationary Teleoperation</h3><span class="year">2025–26</span></div></div>
-            <p>Bimanual teleoperation datasets and uncertainty-aware temporal action segmentation for toy-car assembly — bridging robot hardware and deep learning.</p>
+            <p>I built bimanual teleoperation datasets and uncertainty-aware temporal action segmentation for toy-car assembly — bridging robot hardware and deep learning.</p>
             <div class="paper-links" aria-label="Paper and project website">
               <a class="paper-link" href="https://arxiv.org/abs/2606.08341" target="_blank" rel="noopener">Paper on arXiv <span>↗</span></a>
               <a class="paper-link" href="https://snazzy-kelpie-a9faf0.netlify.app" target="_blank" rel="noopener">Project website <span>↗</span></a>
@@ -377,7 +382,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
           </button>
           <div class="pbody">
             <div><div class="cat">Capstone</div><div class="ptop"><h3>BCI EEG Wheelchair</h3><span class="year">2025–26</span></div></div>
-            <p>EEG-based brain-computer interface wheelchair for independent mobility — motor imagery control, not pre-set paths.</p>
+            <p>I led the build of an EEG-based brain-computer interface wheelchair for independent mobility — motor imagery control, not pre-set paths.</p>
             <a class="view-link" href="#/project/bci-wheelchair">More details <span aria-hidden="true">→</span></a>
           </div>
         </article>
@@ -389,7 +394,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
           </button>
           <div class="pbody">
             <div><div class="cat">Design Optimization</div><div class="ptop"><h3>Airplane Bracket</h3><span class="year">2024</span></div></div>
-            <p>Topology optimization of a Titanium 6Al-4V aerospace bracket (B-0426-M) for metal additive manufacturing in Fusion 360.</p>
+            <p>I performed topology optimization on a Titanium 6Al-4V aerospace bracket (B-0426-M) for metal additive manufacturing in Fusion 360.</p>
             <a class="view-link" href="#/project/airplane-bracket">More details <span aria-hidden="true">→</span></a>
           </div>
         </article>
@@ -401,7 +406,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
           </button>
           <div class="pbody">
             <div><div class="cat">Design Optimization</div><div class="ptop"><h3>Robotic Arm Component</h3><span class="year">2024</span></div></div>
-            <p>Shape optimization for a 50% mass reduction — removing material from low-stress areas and trimming stress concentrators.</p>
+            <p>I used shape optimization to achieve a 50% mass reduction — removing material from low-stress areas and trimming stress concentrators.</p>
             <a class="view-link" href="#/project/robotic-arm">More details <span aria-hidden="true">→</span></a>
           </div>
         </article>
@@ -413,7 +418,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
           </button>
           <div class="pbody">
             <div><div class="cat">Design Optimization</div><div class="ptop"><h3>Coat Hook</h3><span class="year">2024</span></div></div>
-            <p>Comparative generative-design study across materials and processes against a 4.0 factor-of-safety target.</p>
+            <p>I ran a comparative generative-design study across materials and processes against a 4.0 factor-of-safety target.</p>
             <a class="view-link" href="#/project/coat-hook">More details <span aria-hidden="true">→</span></a>
           </div>
         </article>
@@ -429,7 +434,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
       <div class="sec-head"><div><h2 id="resume">Experience</h2></div></div>
 
       <div class="timeline">
-        <div class="job-group">
+        <div class="job-group" id="exp-meta">
           <div class="job-group-header">
             <div class="job-group-org">Meta Superintelligence Labs</div>
             <span class="job-group-loc">Menlo Park, CA</span>
@@ -439,17 +444,17 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
             <div class="when"><strong>Aug 2026 — Present</strong></div>
             <div><h3>Robotics Data Operation Team Lead</h3>
               <ul>
-                <li>Boosted single-shift fleet efficiency from <b>22% to 50%</b> via cable routing, headband camera mounts, inventory tracking, and break schedule optimization.</li>
-                <li>Leads a <b>30-operator team</b> enforcing trajectory data quality and autonomous policy training standards.</li>
-                <li>Designs physical manipulation tasks, workspace layouts, and execution SOPs.</li>
-                <li>Conducts on-site technical interviews, leads onboarding for new hires, and trains new team leads.</li>
+                <li>I boosted single-shift fleet efficiency from <b>22% to 50%</b> via cable routing, headband camera mounts, inventory tracking, and break schedule optimization.</li>
+                <li>I lead a <b>30-operator team</b> and enforce trajectory data quality and autonomous policy training standards.</li>
+                <li>I design physical manipulation tasks, workspace layouts, and execution SOPs.</li>
+                <li>I conduct on-site technical interviews, lead onboarding for new hires, and train new team leads.</li>
               </ul></div>
           </article>
 
           <article class="job job-sub">
             <div class="when"><strong>July 2026 — Aug 2026</strong></div>
             <div><h3>Robotics Data Operation Expert</h3>
-              <ul><li>Executed robot teleoperation to capture demonstration datasets for autonomous policy training.</li><li>Troubleshot hardware and software faults with test engineers.</li></ul></div>
+              <ul><li>I executed robot teleoperation to capture demonstration datasets for autonomous policy training.</li><li>I troubleshot hardware and software faults with test engineers.</li></ul></div>
           </article>
         </div>
 
@@ -459,30 +464,30 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
             <span class="job-group-loc">Riverside, CA</span>
           </div>
 
-          <article class="job job-sub">
+          <article class="job job-sub" id="exp-real">
             <div class="when"><strong>Sept 2025 — July 2026</strong></div>
             <div><h3>Undergraduate Research Assistant</h3><div class="org">Robotics &amp; Explainable AI Lab (REAL)</div>
-              <ul><li>Trained MS-TCN++ models via X3D features, achieving a <b>73.45 edit score</b> with human-to-robot transfer and gated correction — <b>72.51 before correction, vs. 55.23 robot-only</b>.</li><li>Co-authored a transfer learning paper (22 classes) — <a class="inline-link" href="https://arxiv.org/abs/2606.08341" target="_blank" rel="noopener">read it on arXiv ↗</a></li><li>Generated ALOHA bimanual teleoperation datasets and built the full annotation / segmentation pipeline.</li></ul></div>
+              <ul><li>I trained MS-TCN++ models via X3D features, achieving a <b>73.45 edit score</b> with human-to-robot transfer and gated correction — <b>72.51 before correction, vs. 55.23 robot-only</b>.</li><li>I co-authored a transfer learning paper (22 classes) — <a class="inline-link" href="https://arxiv.org/abs/2606.08341" target="_blank" rel="noopener">read it on arXiv ↗</a></li><li>I generated ALOHA bimanual teleoperation datasets and built the full annotation / segmentation pipeline.</li></ul></div>
           </article>
 
-          <article class="job job-sub">
+          <article class="job job-sub" id="exp-formula">
             <div class="when"><strong>Jan 2024 — June 2026</strong></div>
             <div><h3>Suspension Associate Engineer</h3><div class="org">UCR Highlander Racing — Formula SAE</div>
-              <ul><li>Sized control arm tubing for <b>3.0 FOS</b> under 3.5 kN longitudinal and 2.8 kN lateral loads using MATLAB and hand calculations.</li><li>Verified <b>0.42° camber change per 1 mm shim</b>.</li><li>Released 2D drawings with strict GD&amp;T.</li></ul></div>
+              <ul><li>I sized control arm tubing for <b>3.0 FOS</b> under 3.5 kN longitudinal and 2.8 kN lateral loads using MATLAB and hand calculations.</li><li>I verified <b>0.42° camber change per 1 mm shim</b>.</li><li>I released 2D drawings with strict GD&amp;T.</li></ul></div>
           </article>
 
           <article class="job job-sub">
             <div class="when"><strong>Sept 2025 — Mar 2026</strong></div>
             <div><h3>Capstone Team Lead — BCI EEG Wheelchair</h3><div class="org">Senior Design Capstone</div>
-              <ul><li>Led a 5-member team using Gantt charts, weekly technical presentations, and memo reports to faculty advisors.</li></ul></div>
+              <ul><li>I led a 5-member team using Gantt charts, weekly technical presentations, and memo reports to faculty advisors.</li></ul></div>
           </article>
         </div>
       </div>
 
       <div style="height:22px"></div>
       <div class="edu">
-        <div class="card"><div class="kicker">Education</div><h3>University of California, Riverside</h3><p><b style="color:var(--ink)">B.S. Mechanical Engineering — GPA 3.59</b><br>Aug 2022 – June 2026 · Concentration in design and manufacturing, focused on vehicle dynamics, robotics, and hardware design.</p></div>
-        <div class="card"><div class="kicker">Focus</div><h3>What I work on</h3><p>Suspension design and validation, robot teleoperation and data quality, hardware for machine learning, and design optimization for manufacturing.</p></div>
+        <div class="card" id="exp-education"><div class="kicker">Education</div><h3>University of California, Riverside</h3><p><b style="color:var(--ink)">B.S. Mechanical Engineering — GPA 3.59</b><br>Aug 2022 – June 2026 · I concentrated in design and manufacturing, focused on vehicle dynamics, robotics, and hardware design.</p></div>
+        <div class="card"><div class="kicker">Focus</div><h3>What I work on</h3><p>I work on suspension design and validation, robot teleoperation and data quality, hardware for machine learning, and design optimization for manufacturing.</p></div>
       </div>
     </div>
   </section>
@@ -515,28 +520,28 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
               <img src="img-00-8bf0f7366e0c.jpg" alt="Upper and lower control arms assembled to the bearing housing with rod ends and chassis mounting blocks"><span class="zoom">View larger</span>
             </button>
             <div class="pp-body">
-              <p class="pp-lede">A double wishbone control arm in 4130 steel normalized tubing, engineered for a 5,000 N critical buckling load — the part that locates the wheel and carries cornering and braking loads from the tire contact patch into the chassis.</p>
+              <p class="pp-lede">I designed a double wishbone control arm in 4130 steel normalized tubing, engineered for a 5,000 N critical buckling load — the part that locates the wheel and carries cornering and braking loads from the tire contact patch into the chassis.</p>
               <div class="specs pp-specs">
                 <div class="spec"><b>3.0 FOS</b><span>Under 3.5 kN longitudinal &amp; 2.8 kN lateral loads (MATLAB + hand calcs)</span></div>
-                <div class="spec"><b>9.75 mm ID</b><span>Universal bore; 10.636–10.91 mm OD scaled by arm length</span></div>
-                <div class="spec"><b>5,000 N</b><span>Critical buckling load the tubing was engineered around</span></div>
-                <div class="spec"><b>4130 steel</b><span>Normalized tubing, welded to a machined bearing housing</span></div>
+                <div class="spec"><b>9.75 mm ID</b><span>Universal bore; I scaled the OD from 10.636–10.91 mm by arm length</span></div>
+                <div class="spec"><b>5,000 N</b><span>Critical buckling load I engineered the tubing around</span></div>
+                <div class="spec"><b>4130 steel</b><span>Normalized tubing I welded to a machined bearing housing</span></div>
               </div>
               <div class="tags pp-tags"><span class="tag">SolidWorks</span><span class="tag">4130 Steel</span><span class="tag">MATLAB</span><span class="tag">GD&amp;T</span></div>
               <h3>Overview</h3>
-              <p>On a Formula SAE car, the control arms are the structural link between the wheels and the chassis. Every load the tire generates — braking, cornering, bumps — passes through them, and because they work as slender tubes in compression, buckling is the failure mode that drives the design. This arm was designed for UCR Highlander Racing's double wishbone suspension, where the geometry also has to hold the wheel's alignment precisely as the suspension moves.</p>
+              <p>On a Formula SAE car, the control arms are the structural link between the wheels and the chassis. Every load the tire generates — braking, cornering, bumps — passes through them, and because they work as slender tubes in compression, buckling is the failure mode that drives the design. I designed this arm for UCR Highlander Racing's double wishbone suspension, where the geometry also has to hold the wheel's alignment precisely as the suspension moves.</p>
               <h3>Design approach</h3>
-              <p>The arm is built from 4130 steel normalized tubing, welded to a custom-machined steel housing containing Aurora HAB4T bearings. Grade 8 fasteners and Aurora rod ends handle the chassis mounting, so the arm can be installed, adjusted, and serviced with standard hardware. A single universal bore of 9.75 mm ID runs across the arm family, with the tube OD scaled by arm length — 10.636 to 10.91 mm — so longer, more heavily loaded arms get more material without redesigning the interfaces.</p>
+              <p>I built the arm from 4130 steel normalized tubing, welded to a custom-machined steel housing containing Aurora HAB4T bearings. I used Grade 8 fasteners and Aurora rod ends for the chassis mounting, so I can install, adjust, and service the arm with standard hardware. I ran a single universal bore of 9.75 mm ID across the arm family, with the tube OD scaled by arm length — 10.636 to 10.91 mm — so longer, more heavily loaded arms get more material without my redesigning the interfaces.</p>
               <div class="pp-gallery">
                 <figure class="wide">
                   <button class="ph" data-lightbox="img-08-82c308b987fe.jpg" data-title="Control Arm Design — CAD Model" data-caption="CAD render of the double wishbone control arm assembly" aria-label="View control arm CAD render larger">
                     <img src="img-08-82c308b987fe.jpg" alt="CAD render of double wishbone control arm assembly for Formula SAE"><span class="zoom">View larger</span>
                   </button>
-                  <figcaption>The SolidWorks model the arms were built from — double wishbone geometry with the universal bearing bore.</figcaption>
+                  <figcaption>The SolidWorks model I built the arms from — double wishbone geometry with the universal bearing bore.</figcaption>
                 </figure>
               </div>
               <h3>Validation &amp; manufacturing</h3>
-              <p>The design was engineered to maintain a strict 2.5 factor of safety in the original buckling analysis, and the final configuration reaches a 3.0 factor of safety under 3.5 kN longitudinal and 2.8 kN lateral loads, sized with MATLAB and hand calculations. As Suspension Associate Engineer, John also released the 2D drawings with strict GD&amp;T, so the part that came off the welder matched the part that was analyzed.</p>
+              <p>I engineered the design to maintain a strict 2.5 factor of safety in my original buckling analysis, and my final configuration reaches a 3.0 factor of safety under 3.5 kN longitudinal and 2.8 kN lateral loads, which I sized with MATLAB and hand calculations. As Suspension Associate Engineer, I also released the 2D drawings with strict GD&amp;T, so the part that came off the welder matched the part I analyzed.</p>
             </div>
             <nav class="pp-nav" aria-label="Project navigation">
               <a href="#projects" class="mid">← All projects</a>
@@ -556,16 +561,16 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
               <img src="img-01-699be88222cf.jpg" alt="SolidWorks model of complete front suspension corner assembly"><span class="zoom">View larger</span>
             </button>
             <div class="pp-body">
-              <p class="pp-lede">A complete front suspension corner modeled in SolidWorks and mirrored to build the full front axle — the master model the team used for FEA, kinematics, and manufacturing.</p>
+              <p class="pp-lede">I modeled a complete front suspension corner in SolidWorks and mirrored it to build the full front axle — the master model I gave the team for FEA, kinematics, and manufacturing.</p>
               <div class="specs pp-specs">
-                <div class="spec"><b>0.42° / 1 mm</b><span>Camber change verified per 1 mm shim</span></div>
+                <div class="spec"><b>0.42° / 1 mm</b><span>Camber change I verified per 1 mm shim</span></div>
                 <div class="spec"><b>Full axle</b><span>Symmetrical load distribution &amp; alignment in master CAD</span></div>
               </div>
               <div class="tags pp-tags"><span class="tag">SolidWorks</span><span class="tag">FEA</span><span class="tag">Kinematics</span></div>
               <h3>Overview</h3>
-              <p>A single corner — upper and lower control arms, pushrod linkages, and outboard pickup points — only tells half the story. Loads, alignment, and steering behavior emerge at the axle level, so this project took the single-corner design and mirrored it into a complete front track model in one master CAD assembly.</p>
+              <p>A single corner — upper and lower control arms, pushrod linkages, and outboard pickup points — only tells half the story. Loads, alignment, and steering behavior emerge at the axle level, so in this project I took the single-corner design and mirrored it into a complete front track model in one master CAD assembly.</p>
               <h3>Design approach</h3>
-              <p>The mirrored assembly duplicated the exact geometry of the upper and lower control arms, pushrod linkages, and outboard pickup points from the single-corner design, keeping both sides perfectly consistent. Working in a single master model meant a change on one side propagated correctly to the other, and the symmetrical layout guaranteed even load distribution and alignment across the axle.</p>
+              <p>I duplicated the exact geometry of the upper and lower control arms, pushrod linkages, and outboard pickup points from my single-corner design in the mirrored assembly, keeping both sides perfectly consistent. By working in a single master model, I made sure a change on one side propagated correctly to the other, and my symmetrical layout guaranteed even load distribution and alignment across the axle.</p>
               <div class="pp-gallery">
                 <figure>
                   <button class="ph" data-lightbox="img-09-7f873a5a7a5b.jpg" data-title="Front Corner Assembly — Upright Close-Up" data-caption="Close-up of the upright and bearing carrier inside the wheel" aria-label="View front corner upright close-up larger">
@@ -581,7 +586,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
                 </figure>
               </div>
               <h3>Validation</h3>
-              <p>The complete front track model enabled accurate finite element analysis and kinematics simulations that a single corner couldn't support. Camber behavior was verified directly from the model: 0.42° of camber change per 1 mm shim, giving the team a predictable, repeatable way to tune alignment at the track. Having the full axle validated digitally also made the transition from digital prototype to manufacturing the physical parts much smoother.</p>
+              <p>My complete front track model enabled accurate finite element analysis and kinematics simulations that a single corner couldn't support. I verified camber behavior directly from the model: 0.42° of camber change per 1 mm shim, which gave my team a predictable, repeatable way to tune alignment at the track. Validating the full axle digitally also made my transition from digital prototype to manufacturing the physical parts much smoother.</p>
             </div>
             <nav class="pp-nav" aria-label="Project navigation">
               <a href="#/project/control-arm">← Previous: Control Arm Design</a>
@@ -601,7 +606,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
               <img src="img-02-4193d09359c4.jpg" alt="CAD rendering of front pushrod mount sheet metal assembly"><span class="zoom">View larger</span>
             </button>
             <div class="pp-body">
-              <p class="pp-lede">Sheet-metal mounts that interface the front and rear pushrods to the outboard pickup points in a double-shear configuration, as competition rules require — one shared job, solved two different ways for the front and rear packaging.</p>
+              <p class="pp-lede">I designed sheet-metal mounts that interface the front and rear pushrods to the outboard pickup points in a double-shear configuration, as competition rules require — one shared job I solved two different ways for the front and rear packaging.</p>
               <div class="specs pp-specs">
                 <div class="spec"><b>Front: 49.9 g + 15.5 g</b><span>Base plate + each tab, 1/16″ sheet metal</span></div>
                 <div class="spec"><b>Front: $18 / unit</b><span>Total manufacturing cost — front mount</span></div>
@@ -610,25 +615,25 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
               </div>
               <div class="tags pp-tags"><span class="tag">SolidWorks</span><span class="tag">Sheet Metal</span><span class="tag">Double Shear</span><span class="tag">Lightweighting</span></div>
               <h3>Overview</h3>
-              <p>Pushrods carry the wheel loads from the control arm up to the rockers and dampers, and the mount where the pushrod meets the arm sees those loads under constant dynamic bending. Formula SAE rules require that joint to be captured in double shear, so each mount has to wrap the rod end on both sides — strong, precisely aligned, and light, because every gram outboard is unsprung mass. The front and rear mounts meet the same requirement, but their packaging led to two distinct designs.</p>
+              <p>Pushrods carry the wheel loads from the control arm up to the rockers and dampers, and the mount where the pushrod meets the arm sees those loads under constant dynamic bending. Formula SAE rules require that joint to be captured in double shear, so each mount has to wrap the rod end on both sides — strong, precisely aligned, and light, because every gram outboard is unsprung mass. My front and rear mounts meet the same requirement, but their packaging led me to create two distinct designs.</p>
               <h3>Front — base plate &amp; tabs</h3>
-              <p>The front design uses a custom base plate with precision-cut slots that align and secure two individual tabs, creating the double-shear attachment. The base plate's edges are contoured to weld directly onto the tubular lower control arms, and the tabs are welded on both sides, so the load path from pushrod to arm is continuous steel with no bolted joints to loosen. The finished front mount weighs 49.9 g for the base plate plus 15.5 g per tab in 1/16″ sheet metal — about 81 g in total — and costs $18 per unit to manufacture.</p>
+              <p>For the front, I designed a custom base plate with precision-cut slots that align and secure two individual tabs, creating the double-shear attachment. I contoured the base plate's edges to weld directly onto the tubular lower control arms, and I welded the tabs on both sides, so the load path from pushrod to arm is continuous steel with no bolted joints to loosen. The finished front mount I built weighs 49.9 g for the base plate plus 15.5 g per tab in 1/16″ sheet metal — about 81 g in total — and costs $18 per unit for me to manufacture.</p>
               <div class="pp-gallery">
                 <figure>
                   <button class="ph" data-lightbox="img-11-12f2a97be168.jpg" data-title="Front Pushrod Mount — Base Plate" data-caption="Slotted base plate, contoured to weld onto the lower control arm" aria-label="View front pushrod base plate larger">
                     <img src="img-11-12f2a97be168.jpg" alt="Front pushrod mount base plate with precision-cut slots for the tabs"><span class="zoom">View larger</span>
                   </button>
-                  <figcaption>The slotted base plate, its edges contoured to weld directly onto the tubular lower control arm.</figcaption>
+                  <figcaption>The slotted base plate I contoured to weld directly onto the tubular lower control arm.</figcaption>
                 </figure>
                 <figure>
                   <button class="ph" data-lightbox="img-12-bb1b6765b7bd.jpg" data-title="Front Pushrod Mount — Assembled" data-caption="Assembled front mount on the control arm, tabs in double shear" aria-label="View assembled front pushrod mount larger">
                     <img src="img-12-bb1b6765b7bd.jpg" alt="Assembled front pushrod mount on the control arm with both tabs forming the double-shear pickup"><span class="zoom">View larger</span>
                   </button>
-                  <figcaption>The assembled front mount on the arm — both tabs slotted into the base, forming the double-shear pickup.</figcaption>
+                  <figcaption>The front mount I assembled on the arm — I slotted both tabs into the base to form the double-shear pickup.</figcaption>
                 </figure>
               </div>
               <h3>Rear — folded single piece</h3>
-              <p>The rear packaging left room to rethink how the part is made. Instead of a base plate plus two separate tabs, the rear design folds a single piece of sheet metal so the base intrinsically acts as one of the required structural tabs, eliminating redundant material and aligning for direct welding onto the tubular upper control arms. A single additional precision-cut tab slots into the base and is welded on both sides to complete the outboard pickup point and the double-shear capture. The folded base weighs 23.7 g and the auxiliary tab 7.39 g in 1/16″ sheet metal, and the unit cost drops to $15 through the reduced component count.</p>
+              <p>The rear packaging left me room to rethink how I make the part. Instead of a base plate plus two separate tabs, I folded a single piece of sheet metal so the base intrinsically acts as one of the required structural tabs, eliminating redundant material and aligning for direct welding onto the tubular upper control arms. I slotted a single additional precision-cut tab into the base and welded it on both sides to complete the outboard pickup point and the double-shear capture. The folded base I made weighs 23.7 g and the auxiliary tab 7.39 g in 1/16″ sheet metal, and I brought the unit cost down to $15 through the reduced component count.</p>
               <div class="pp-gallery">
                 <figure>
                   <button class="ph" data-lightbox="img-13-c222f872863a.jpg" data-title="Rear Pushrod Mount — Folded Base" data-caption="Folded single-piece base — the fold forms one of the shear tabs" aria-label="View rear pushrod folded base larger">
@@ -640,17 +645,17 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
                   <button class="ph" data-lightbox="img-14-ab31d38a178d.jpg" data-title="Rear Pushrod Mount — Auxiliary Tab" data-caption="The single auxiliary tab that slots into the folded base" aria-label="View rear pushrod auxiliary tab larger">
                     <img src="img-14-ab31d38a178d.jpg" alt="Rear pushrod mount auxiliary tab with bolt hole and locating notch"><span class="zoom">View larger</span>
                   </button>
-                  <figcaption>The single auxiliary tab that slots into the base to complete the pickup point.</figcaption>
+                  <figcaption>The single auxiliary tab I slot into the base to complete the pickup point.</figcaption>
                 </figure>
                 <figure class="wide">
                   <button class="ph" data-lightbox="img-15-a1d4286e1d52.jpg" data-title="Rear Pushrod Mount — Installed" data-caption="Rear mount installed, pushrod rod end captured in double shear" aria-label="View installed rear pushrod mount larger">
                     <img src="img-15-a1d4286e1d52.jpg" alt="Installed rear pushrod mount with the pushrod rod end bolted in double shear"><span class="zoom">View larger</span>
                   </button>
-                  <figcaption>The rear mount installed on the arm, with the pushrod rod end captured in double shear.</figcaption>
+                  <figcaption>The rear mount I installed on the arm, with the pushrod rod end captured in double shear.</figcaption>
                 </figure>
               </div>
               <h3>Results</h3>
-              <p>Together, the pair shows the same structural idea adapted to its corner: the front prioritises a robust, slotted base-and-tabs assembly for optimal load transfer under dynamic bending, while the rear streamlines manufacturing — fewer parts to cut, fixture, and weld, and less unsprung mass at the wheel — while fully satisfying the structural and dynamic constraints. Both are priced and weighted for a student racing team to run on the car.</p>
+              <p>Together, the pair shows how I adapted the same structural idea to its corner: at the front I prioritised a robust, slotted base-and-tabs assembly for optimal load transfer under dynamic bending, while at the rear I streamlined manufacturing — fewer parts for me to cut, fixture, and weld, and less unsprung mass at the wheel — while fully satisfying the structural and dynamic constraints. I priced and weighted both for a student racing team to run on the car.</p>
             </div>
             <nav class="pp-nav" aria-label="Project navigation">
               <a href="#/project/front-corner">← Previous: Front Corner Assembly</a>
@@ -670,7 +675,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
               <img src="img-03-0e2aba241af2.jpg" alt="ALOHA stationary bimanual teleoperation robot in the REAL Lab"><span class="zoom">View larger</span>
             </button>
             <div class="pp-body">
-              <p class="pp-lede">Bimanual teleoperation datasets and uncertainty-aware temporal action segmentation for toy-car assembly — bridging robot hardware and deep learning, and the work behind a co-authored paper on human-to-robot transfer learning.</p>
+              <p class="pp-lede">I built bimanual teleoperation datasets and uncertainty-aware temporal action segmentation for toy-car assembly — bridging robot hardware and deep learning, and the work behind a paper I co-authored on human-to-robot transfer learning.</p>
               <div class="specs pp-specs">
                 <div class="spec"><b>73.45 edit score</b><span>Best — human&rarr;robot transfer + gated corrector, mean over 3 seeds</span></div>
                 <div class="spec"><b>55.23 &rarr; 72.51</b><span>Robot-only &rarr; transfer (+17.28) with only 9 robot demonstrations</span></div>
@@ -679,16 +684,16 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
               </div>
               <div class="tags pp-tags"><span class="tag">X3D</span><span class="tag">MS-TCN++</span><span class="tag">Transfer Learning</span><span class="tag">Conformal Prediction</span><span class="tag">SolidWorks</span><span class="tag">Data Pipeline</span></div>
               <h3>Overview</h3>
-              <p>Action segmentation supports intention estimation and execution monitoring in assisted teleoperation — the robot needs to recognize what the operator is doing, step by step, to assist reliably during long-horizon assembly. The problem is data: robot demonstrations are costly and hardware-limited to collect, while human demonstrations are far easier to gather and carry rich temporal structure. At the REAL Lab, John worked on both ends of that pipeline: operating the ALOHA stationary bimanual system to generate teleoperation demonstrations of toy-car assembly, and building the models that learn to recognize each step of the task as it happens.</p>
+              <p>Action segmentation supports intention estimation and execution monitoring in assisted teleoperation — the robot needs to recognize what the operator is doing, step by step, to assist reliably during long-horizon assembly. The problem is data: robot demonstrations are costly and hardware-limited to collect, while human demonstrations are far easier to gather and carry rich temporal structure. At the REAL Lab, I worked on both ends of that pipeline: I operated the ALOHA stationary bimanual system to generate teleoperation demonstrations of toy-car assembly, and I built the models that learn to recognize each step of the task as it happens.</p>
               <h3>Hardware &amp; data</h3>
-              <p>Dataset quality starts with the recording setup. John designed a custom 3D-modeled SolidWorks camera mount to stabilize recording, so the footage the models trained on stayed consistent across sessions. He then processed, annotated, and temporally segmented the footage — turning raw teleoperation video into labeled, multi-step action sequences across 22 toy-car assembly action classes, sharing a single 22-class vocabulary and 192-dimensional X3D-M features across the human and robot domains.</p>
+              <p>Dataset quality starts with the recording setup. I designed a custom 3D-modeled SolidWorks camera mount to stabilize recording, so the footage my models trained on stayed consistent across sessions. I then processed, annotated, and temporally segmented the footage — turning raw teleoperation video into labeled, multi-step action sequences across 22 toy-car assembly action classes, sharing a single 22-class vocabulary and 192-dimensional X3D-M features across the human and robot domains.</p>
               <p>The paper&rsquo;s cross-embodiment dataset pairs two sources. The human (source) domain is UMI hand demonstrations: 83 training videos plus 20 validation videos of toy-car assembly, captured with an egocentric GoPro on a handheld UMI gripper. The robot (target) domain is ALOHA teleoperation recorded with dual wrist cameras at 480&times;640, split into 18 training videos (9 demonstrations), 26 validation videos (13 demonstrations), 34 test videos (17 demonstrations), and 46 calibration videos. That imbalance is the point: the 83 human videos contain 4,025 observed action transitions, while the 18 robot training videos contain only 436 — too few on their own to learn the long-range ordering of a 22-step assembly, whose 22&times;22 transition matrix has 484 entries. Pretraining transfers those ordering priors to the robot.</p>
               <div class="pp-gallery">
                 <figure>
                   <button class="ph" data-lightbox="img-16-3be72f19aa4a.jpg" data-title="ALOHA Stationary — Teleoperation" data-caption="Operating the ALOHA stationary system to record assembly demonstrations" aria-label="View ALOHA teleoperation photo larger">
                     <img src="img-16-3be72f19aa4a.jpg" alt="John Dang operating the ALOHA stationary bimanual teleoperation system in the REAL Lab"><span class="zoom">View larger</span>
                   </button>
-                  <figcaption>Operating the ALOHA stationary system to record the toy-car assembly demonstrations the models trained on.</figcaption>
+                  <figcaption>Here I am operating the ALOHA stationary system to record the toy-car assembly demonstrations my models trained on.</figcaption>
                 </figure>
                 <figure>
                   <button class="ph" data-lightbox="img-17-ad85bf071bf9.jpg" data-title="ALOHA Stationary — Assembly Close-Up" data-caption="Follower gripper at work on the toy fire truck assembly" aria-label="View ALOHA assembly close-up larger">
@@ -703,7 +708,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
               <p>All headline numbers below are from the published v2 paper (arXiv:2606.08341, revised 13 Oct 2026) and its project website, evaluated on the robot test set — 34 videos, 17 demonstrations — as a mean over 3 seeds. Training the model on robot data alone reaches a 55.23 edit score. Pretraining on human demonstrations and fine-tuning on just 9 robot demonstrations raises that to 72.51 — a gain of +17.28 — and lifts segmental F1@50 from 10.97 to 16.86 and frame accuracy from 28.48% to 34.11%. Adding the gated corrector gives the paper&rsquo;s best result: a 73.45 edit score with 34.19% frame accuracy and F1@50 of 16.89, without lowering frame accuracy.</p>
               <p>The uncertainty results are deliberately candid. The reliability analyzer identifies incorrect segments with 0.755 AUROC. Correction only helps when it is selective: applying corrections without the gate drops the edit score to 67.86, while gated acceptance holds 73.45 — mainly by safeguarding against harmful relabeling. Conformal prediction achieves 95.38% empirical coverage at its 93% target, but the prediction sets are large, averaging 17.41 of the 22 classes (class-conditional sets run about 17&ndash;27% smaller than standard conformal sets, which average about 21 of 22). The paper&rsquo;s conclusion is balanced: human temporal pretraining clearly works, while reliable correction and informative uncertainty quantification remain hard with so little robot supervision.</p>
               <h3>About the paper</h3>
-              <p><em>Uncertainty-Aware Action Segmentation for Human-to-Robot Assembly Teleoperation</em>, arXiv:2606.08341 [cs.RO] — first submitted 6 June 2026, v2 revised 13 October 2026. Authors: Fnu Heman, Yixuan Wang, Kolin Xu, Conner Wallace, John Dang, Akhil Joshi, Vignesh Thondikulam, Jun Sheng, Pinhas Ben-Tzvi, and Mingyu Cai. John is a co-author through his REAL Lab work on the ALOHA data pipeline and segmentation models.</p>
+              <p><em>Uncertainty-Aware Action Segmentation for Human-to-Robot Assembly Teleoperation</em>, arXiv:2606.08341 [cs.RO] — first submitted 6 June 2026, v2 revised 13 October 2026. Authors: Fnu Heman, Yixuan Wang, Kolin Xu, Conner Wallace, John Dang, Akhil Joshi, Vignesh Thondikulam, Jun Sheng, Pinhas Ben-Tzvi, and Mingyu Cai. I am a co-author through my REAL Lab work on the ALOHA data pipeline and segmentation models.</p>
               <div class="paper-links" aria-label="Paper and project website">
                 <a class="paper-link" href="https://arxiv.org/abs/2606.08341" target="_blank" rel="noopener">Paper on arXiv <span>↗</span></a>
                 <a class="paper-link" href="https://snazzy-kelpie-a9faf0.netlify.app" target="_blank" rel="noopener">Project website <span>↗</span></a>
@@ -727,16 +732,16 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
               <img src="img-04-b74b944f82d5.jpg" alt="Brain-computer interface EEG wheelchair capstone prototype"><span class="zoom">View larger</span>
             </button>
             <div class="pp-body">
-              <p class="pp-lede">An EEG-based brain-computer interface wheelchair for independent mobility — driven by motor imagery, the user imagining movement, rather than following pre-set paths.</p>
+              <p class="pp-lede">I led the development of an EEG-based brain-computer interface wheelchair for independent mobility — driven by motor imagery, the user imagining movement, rather than following pre-set paths.</p>
               <div class="specs pp-specs">
                 <div class="spec"><b>20 Hz · OpenBCI</b><span>Ganglion headset, FFT filtering, Python → Arduino Uno</span></div>
                 <div class="spec"><b>Dual 350 W · 24 V 50 Ah</b><span>43 A H-bridges, chain drive, 55-tooth sprocket at 3.0 FOS</span></div>
               </div>
               <div class="tags pp-tags"><span class="tag">OpenBCI</span><span class="tag">Python</span><span class="tag">Arduino / C++</span><span class="tag">Team Lead — 5</span></div>
               <h3>Overview</h3>
-              <p>For people who can't use a joystick, a wheelchair's controls are the barrier to independent mobility. This capstone set out to remove the hands from the loop entirely: read the user's intent from EEG signals and turn it into driving commands, with the user steering live rather than selecting from pre-programmed routes.</p>
+              <p>For people who can't use a joystick, a wheelchair's controls are the barrier to independent mobility. In this capstone, I set out with my team to remove the hands from the loop entirely: I read the user's intent from EEG signals and turn it into driving commands, with the user steering live rather than selecting from pre-programmed routes.</p>
               <h3>Design approach</h3>
-              <p>Early on, a design matrix compared control paradigms and selected motor imagery over evoked potentials for live control. The signal chain runs from an OpenBCI Ganglion headset sampling at 20 Hz, through FFT filtering in Python, which sends directional commands over serial to an Arduino Uno driving two H-bridge controllers. On the mechanical side, dual 350 W motors on a 24 V 50 Ah supply drive the wheels through a chain drive with a 55-tooth sprocket sized at a 3.0 factor of safety, mounted with a custom PLA sprocket mount fastening the sprockets to the wheel hub. Ultrasonic sensors trigger autonomous deceleration for collision avoidance, so the chair protects the user even when a command is late or wrong.</p>
+              <p>Early on, I used a design matrix to compare control paradigms and I selected motor imagery over evoked potentials for live control. I built a signal chain that runs from an OpenBCI Ganglion headset sampling at 20 Hz, through FFT filtering in Python, which sends directional commands over serial to an Arduino Uno driving two H-bridge controllers. On the mechanical side, I used dual 350 W motors on a 24 V 50 Ah supply to drive the wheels through a chain drive with a 55-tooth sprocket I sized at a 3.0 factor of safety, mounted with a custom PLA sprocket mount I made to fasten the sprockets to the wheel hub. I added ultrasonic sensors to trigger autonomous deceleration for collision avoidance, so the chair protects the user even when a command is late or wrong.</p>
               <div class="pp-gallery">
                 <figure>
                   <button class="ph fit" data-lightbox="img-18-74af81b124e2.jpg" data-title="BCI EEG Wheelchair — Live EEG" data-caption="Live EEG traces in the OpenBCI GUI during motor imagery" aria-label="View BCI EEG traces larger">
@@ -752,7 +757,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
                 </figure>
               </div>
               <h3>Leading the team</h3>
-              <p>John led the 5-member team from September 2025 to March 2026, managing the timeline with Gantt charts and validating decisions through weekly technical presentations and memo reports to faculty advisors — the same design, documentation, and review discipline the project needed to integrate EEG signal processing, embedded control, and a drivetrain into one working chair.</p>
+              <p>I led the 5-member team from September 2025 to March 2026, managing the timeline with Gantt charts and validating decisions through weekly technical presentations and memo reports to faculty advisors — the same design, documentation, and review discipline I needed to integrate EEG signal processing, embedded control, and a drivetrain into one working chair.</p>
             </div>
             <nav class="pp-nav" aria-label="Project navigation">
               <a href="#/project/aloha">← Previous: ALOHA Teleoperation</a>
@@ -771,18 +776,18 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
               <img src="img-05-a6462d899e8d.jpg" alt="Topology-optimized airplane bracket prototype with two pin bores and a bolt base"><span class="zoom">View larger</span>
             </button>
             <div class="pp-body">
-              <p class="pp-lede">Topology optimization of a Titanium 6Al-4V aerospace bracket (B-0426-M), redesigned for metal additive manufacturing in Fusion 360 instead of being machined from solid stock.</p>
+              <p class="pp-lede">I performed topology optimization on a Titanium 6Al-4V aerospace bracket (B-0426-M), which I redesigned for metal additive manufacturing in Fusion 360 instead of machining it from solid stock.</p>
               <div class="specs pp-specs">
                 <div class="spec"><b>10 kN ↑ · 5 kN →</b><span>Pin loads; 4.5 kN bolt preload over 20 mm</span></div>
                 <div class="spec"><b>1.5 FOS target</b><span>Validated with static stress simulation</span></div>
               </div>
               <div class="tags pp-tags"><span class="tag">Fusion 360</span><span class="tag">Generative Design</span><span class="tag">FEA</span></div>
               <h3>Overview</h3>
-              <p>A machined bracket carries the shape of its manufacturing process: material stays wherever the cutter couldn't reach, not where the loads need it. Moving the part to metal additive manufacturing removes that constraint — but only if the design is re-thought for the process. This project took the B-0426-M bracket through a full topology optimization workflow to find the shape the loads actually require.</p>
+              <p>A machined bracket carries the shape of its manufacturing process: material stays wherever the cutter couldn't reach, not where the loads need it. Moving the part to metal additive manufacturing removes that constraint — but only if the design is re-thought for the process. In this project, I took the B-0426-M bracket through a full topology optimization workflow to find the shape the loads actually require.</p>
               <h3>Design approach</h3>
-              <p>Preserve regions were defined at the mounting interfaces, so the optimizer couldn't touch the geometry that has to mate with the rest of the assembly, and obstacle geometries prevented any interference with surrounding parts. The bracket was loaded with 10 kN upward and 5 kN lateral pin loads, plus a 4.5 kN bolt preload distributed over 20 mm, against a 1.5 factor-of-safety target.</p>
+              <p>I defined preserve regions at the mounting interfaces, so the optimizer couldn't touch the geometry that has to mate with the rest of the assembly, and I set obstacle geometries to prevent any interference with surrounding parts. I loaded the bracket with 10 kN upward and 5 kN lateral pin loads, plus a 4.5 kN bolt preload distributed over 20 mm, against a 1.5 factor-of-safety target.</p>
               <h3>Validation</h3>
-              <p>The final topology was evaluated by plotting mass against von Mises stress across design candidates — the trade curve that shows exactly what each gram saved costs in stress — followed by a complete static stress simulation to validate the chosen design before it would ever be printed.</p>
+              <p>I evaluated the final topology by plotting mass against von Mises stress across design candidates — the trade curve that shows exactly what each gram I saved costs in stress — and I ran a complete static stress simulation to validate the design I chose before it would ever be printed.</p>
               <button class="ph pp-photo" data-lightbox="img-20-28d390bb67d2.jpg" data-title="Airplane Bracket — Stress Analysis" data-caption="Von Mises stress simulation of the topology-optimized bracket in Fusion 360" aria-label="View airplane bracket stress analysis larger">
                 <img src="img-20-28d390bb67d2.jpg" alt="Fusion 360 von Mises stress analysis of the topology-optimized airplane bracket"><span class="zoom">View larger</span>
               </button>
@@ -805,16 +810,16 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
               <img src="img-06-ac85d72f4296.jpg" alt="Robotic arm component with von Mises stress analysis results"><span class="zoom">View larger</span>
             </button>
             <div class="pp-body">
-              <p class="pp-lede">Shape optimization for a 50% mass reduction — removing material from low-stress areas and trimming stress concentrators, then proving with FEA that the lighter part is still comfortably strong.</p>
+              <p class="pp-lede">I used shape optimization to achieve a 50% mass reduction — removing material from low-stress areas and trimming stress concentrators, then proving with FEA that my lighter part is still comfortably strong.</p>
               <div class="specs pp-specs">
                 <div class="spec"><b>85.541 MPa</b><span>Max von Mises stress; 0.321 mm peak displacement</span></div>
                 <div class="spec"><b>5.88 min FOS</b><span>Well above the 1.5 minimum requirement</span></div>
               </div>
               <div class="tags pp-tags"><span class="tag">Shape Optimization</span><span class="tag">FEA</span><span class="tag">Lightweighting</span></div>
               <h3>Overview</h3>
-              <p>On a robotic arm, mass is expensive twice: the part itself weighs more, and every gram at the end of the arm demands more torque, bigger actuators, and more energy to move. This project took an existing arm component and cut its mass in half through shape optimization, guided at every step by stress analysis rather than guesswork.</p>
+              <p>On a robotic arm, mass is expensive twice: the part itself weighs more, and every gram at the end of the arm demands more torque, bigger actuators, and more energy to move. In this project, I took an existing arm component and cut its mass in half through shape optimization, guided at every step by stress analysis rather than guesswork.</p>
               <h3>Design approach</h3>
-              <p>The optimization removed material from low-stress areas — the regions FEA showed were barely working — and trimmed stress concentrators, the sharp features where cracks start. The result keeps material only where the load path needs it, which also simplifies the geometry the part has to be manufactured from.</p>
+              <p>I removed material from low-stress areas — the regions my FEA showed were barely working — and I trimmed stress concentrators, the sharp features where cracks start. My result keeps material only where the load path needs it, which also simplifies the geometry I have to manufacture the part from.</p>
               <div class="pp-gallery">
                 <figure>
                   <button class="ph fit" data-lightbox="img-21-89dd66ff0f6b.jpg" data-title="Robotic Arm Component — Before" data-caption="The component before shape optimization" aria-label="View robotic arm component before optimization larger">
@@ -826,11 +831,11 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
                   <button class="ph fit" data-lightbox="img-22-bea30a62cdc1.jpg" data-title="Robotic Arm Component — After" data-caption="The component after shape optimization" aria-label="View robotic arm component after optimization larger">
                     <img src="img-22-bea30a62cdc1.jpg" alt="Robotic arm component after shape optimization, with lightening pockets cut into low-stress areas"><span class="zoom">View larger</span>
                   </button>
-                  <figcaption>After — material removed from low-stress areas, stress concentrators trimmed.</figcaption>
+                  <figcaption>After — I removed material from low-stress areas and trimmed the stress concentrators.</figcaption>
                 </figure>
               </div>
               <h3>Validation</h3>
-              <p>The final static stress analysis validated the design: maximum von Mises stress of 85.541 MPa with 0.321 mm peak displacement, and a minimum factor of safety of 5.88 — well above the 1.5 minimum requirement. With that much margin, the analysis also highlighted opportunities for further weight reduction or alternative material selection, while the optimized shape already improves manufacturability and cost-efficiency.</p>
+              <p>My final static stress analysis validated my design: maximum von Mises stress of 85.541 MPa with 0.321 mm peak displacement, and a minimum factor of safety of 5.88 — well above the 1.5 minimum requirement. With that much margin, my analysis also highlighted opportunities for further weight reduction or alternative material selection, while my optimized shape already improves manufacturability and cost-efficiency.</p>
             </div>
             <nav class="pp-nav" aria-label="Project navigation">
               <a href="#/project/airplane-bracket">← Previous: Airplane Bracket</a>
@@ -850,7 +855,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
               <img src="img-07-b6de231d8a4d.jpg" alt="Generative design iterations of a coat hook component"><span class="zoom">View larger</span>
             </button>
             <div class="pp-body">
-              <p class="pp-lede">A comparative generative-design study across materials and manufacturing processes, run against a 4.0 factor-of-safety target — a small part used to answer a general question: which material and process actually win?</p>
+              <p class="pp-lede">I ran a comparative generative-design study across materials and manufacturing processes, against a 4.0 factor-of-safety target — I used a small part to answer a general question: which material and process actually win?</p>
               <div class="specs pp-specs">
                 <div class="spec"><b>8.46 FOS</b><span>Die-cast Aluminum AlSi10Mg — 0.2 mm max displacement</span></div>
                 <div class="spec"><b>61–62 g</b><span>PA 11 polymer iterations — lighter, but weaker</span></div>
@@ -859,15 +864,15 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
               <h3>Overview</h3>
               <p>A coat hook is a deliberately simple part, which makes it a clean test bed: one load case, one safety target, and no confounding geometry. The real subject of the study isn't the hook — it's the trade-off between polymer and metal, and between additive manufacturing and die casting, when a generative design tool is allowed to explore all four combinations.</p>
               <h3>Design approach</h3>
-              <p>The study systematically compared PA 11 polymer with Aluminum AlSi10Mg, testing both additive manufacturing and die casting for each, and optimized every variant for weight and mechanical properties against the same 4.0 factor-of-safety target — so the differences in the results come from the material and process, not from moving goalposts.</p>
+              <p>I systematically compared PA 11 polymer with Aluminum AlSi10Mg, testing both additive manufacturing and die casting for each, and I optimized every variant for weight and mechanical properties against the same 4.0 factor-of-safety target — so the differences in my results come from the material and process, not from moving goalposts.</p>
               <h3>Results</h3>
-              <p>Die-cast Aluminum AlSi10Mg came out ahead with an 8.46 factor of safety — more than double the target — and just 0.2 mm of maximum displacement. The PA 11 polymer iterations were lighter at 61–62 g, but weaker. The conclusion: aluminum alloy paired with die casting provided the optimal mechanical performance, and the study quantifies exactly what the lighter polymer option would have cost in strength.</p>
+              <p>Die-cast Aluminum AlSi10Mg came out ahead with an 8.46 factor of safety — more than double the target — and just 0.2 mm of maximum displacement. The PA 11 polymer iterations were lighter at 61–62 g, but weaker. I concluded that aluminum alloy paired with die casting provided the optimal mechanical performance, and my study quantifies exactly what the lighter polymer option would have cost in strength.</p>
               <div class="pp-gallery">
                 <figure>
                   <button class="ph" data-lightbox="img-23-54ae2f649d3b.jpg" data-title="Coat Hook — Generative Iteration" data-caption="Another generative iteration from the material and process comparison" aria-label="View coat hook generative iteration larger">
                     <img src="img-23-54ae2f649d3b.jpg" alt="Another generative design iteration of the coat hook with load arrows at the hook"><span class="zoom">View larger</span>
                   </button>
-                  <figcaption>Another generative iteration from the comparison set, with the same load case applied at the hook.</figcaption>
+                  <figcaption>Another generative iteration from my comparison set, with the same load case I applied at the hook.</figcaption>
                 </figure>
                 <figure>
                   <button class="ph" data-lightbox="img-24-739bdc9e1da9.jpg" data-title="Coat Hook — Stress Analysis" data-caption="Von Mises stress result for one of the compared iterations" aria-label="View coat hook stress analysis larger">
@@ -879,7 +884,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
                   <button class="ph" data-lightbox="img-25-a643257ee037.jpg" data-title="Coat Hook — Stress Analysis, Second Iteration" data-caption="Von Mises stress result for another compared iteration" aria-label="View second coat hook stress analysis larger">
                     <img src="img-25-a643257ee037.jpg" alt="Von Mises stress analysis of a second coat hook iteration, shown in blue at a higher stress scale"><span class="zoom">View larger</span>
                   </button>
-                  <figcaption>Stress result for another iteration — the comparison that separated the polymer and aluminum candidates.</figcaption>
+                  <figcaption>Stress result for another iteration — the comparison I used to separate the polymer and aluminum candidates.</figcaption>
                 </figure>
               </div>
             </div>
@@ -902,7 +907,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
             <h3>How I got here</h3>
             <p>The first moment I remember wanting to pursue mechanical engineering was working with my dad on his car as a kid. Doing basic maintenance and modding with him got me thinking about how parts and systems could be optimized — and it gave me a lasting passion for problem solving. I liked taking something apart, understanding why it worked the way it did, and figuring out how it could work better. Watching <em>Iron Man</em> fed the same spark — seeing someone build extraordinary machines in a garage made engineering feel less like a school subject and more like something I actually wanted to do.</p>
             <p>That carried straight into hardware that has to survive real loads. With UCR Highlander Racing, I spent three years on the suspension team — sizing control arm tubing for buckling, verifying camber change per shim, modeling a full front corner for FEA and kinematics, and releasing drawings with GD&amp;T so what we welded matched what we analyzed. That work taught me to design for manufacturing and validation at the same time, not as an afterthought.</p>
-            <p>At the Robotics &amp; Explainable AI Lab (REAL), that hardware background met machine learning. I operated the ALOHA bimanual teleoperation system to generate demonstration datasets, built a custom camera mount to keep recordings consistent, and trained temporal action segmentation models — work that became a co-authored paper, <em>Uncertainty-Aware Action Segmentation for Human-to-Robot Assembly Teleoperation</em>.</p>
+            <p>At the Robotics &amp; Explainable AI Lab (REAL), that hardware background met machine learning. I operated the ALOHA bimanual teleoperation system to generate demonstration datasets, built a custom camera mount to keep recordings consistent, and trained temporal action segmentation models — work that became a paper I co-authored, <em>Uncertainty-Aware Action Segmentation for Human-to-Robot Assembly Teleoperation</em>.</p>
 
             <h3>What I do now</h3>
             <p>At Meta Superintelligence Labs, I lead a 30-operator robotics data team. My work sits between the physical setup and the data it produces: designing manipulation tasks, workspace layouts, and SOPs, holding trajectory quality to the standard autonomous policy training requires, troubleshooting hardware and software faults, interviewing and onboarding new hires to grow capacity, and training new team leads. Earlier improvements to cable routing, camera mounts, inventory tracking, and scheduling helped lift single-shift fleet efficiency from 22% to 50%.</p>
@@ -916,11 +921,11 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
             <h3>How I work</h3>
             <p>Beyond the technical skills, what tends to matter most on a team is how someone works day to day. This is the approach I try to bring to every role:</p>
             <ul>
-              <li><b>Own the problem end to end</b> — from diagnosing whether a failure is hardware, task design, or data, through to leading the fix and checking that it held.</li>
-              <li><b>Make the work repeatable</b> — writing SOPs, workspace layouts, and quality standards so good results do not depend on one person being in the room.</li>
-              <li><b>Communicate clearly and often</b> — weekly technical presentations and memo reports as a capstone lead, and regular onboarding and feedback while leading operators at Meta.</li>
-              <li><b>Grow the team&rsquo;s capacity</b> — interviewing and onboarding new hires, and training new team leads, not just completing my own tasks.</li>
-              <li><b>Stay hands-on under pressure</b> — troubleshooting hardware and software faults on the floor, and improving the physical setup — cable routing, camera mounts, scheduling — when that is what is limiting the data.</li>
+              <li><b>I own the problem end to end</b> — from diagnosing whether a failure is hardware, task design, or data, through to leading the fix and checking that it held.</li>
+              <li><b>I make the work repeatable</b> — writing SOPs, workspace layouts, and quality standards so good results do not depend on one person being in the room.</li>
+              <li><b>I communicate clearly and often</b> — weekly technical presentations and memo reports as a capstone lead, and regular onboarding and feedback while leading operators at Meta.</li>
+              <li><b>I grow the team&rsquo;s capacity</b> — interviewing and onboarding new hires, and training new team leads, not just completing my own tasks.</li>
+              <li><b>I stay hands-on under pressure</b> — troubleshooting hardware and software faults on the floor, and improving the physical setup — cable routing, camera mounts, scheduling — when that is what is limiting the data.</li>
             </ul>
 
             <h3>Outside of work</h3>
